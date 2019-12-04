@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 
 // Screen Recorder will save individual images of active scene in any resolution and of a specific image format
 // including raw, jpg, png, and ppm.  Raw and PPM are the fastest image formats for saving.
@@ -10,9 +11,13 @@ using System.IO;
 
 public class ScreenRecorder : MonoBehaviour
 {
+    public static bool SCREEN_CAP = false;
+
+    private bool initLandingPhoto = false; // Whether an initial photo has been taken of the landing site
+
     // 4k = 3840 x 2160   1080p = 1920 x 1080
-    public int captureWidth = 1920;
-    public int captureHeight = 1080;
+    public int captureWidth = 800;
+    public int captureHeight = 600;
 
     // optional game object to hide during screenshots (usually your scene canvas hud)
     public GameObject hideGameObject;
@@ -22,7 +27,7 @@ public class ScreenRecorder : MonoBehaviour
 
     // configure with raw, jpg, png, or ppm (simple raw format)
     public enum Format { RAW, JPG, PNG, PPM };
-    public Format format = Format.PPM;
+    public Format format = Format.JPG;//PPM; // use PPM for AVI reconstruction
 
     // folder to write output (defaults to data path)
     public string folder;
@@ -61,7 +66,17 @@ public class ScreenRecorder : MonoBehaviour
         }
 
         // use width, height, and counter for unique file name
-        var filename = string.Format("{0}/screen_{1}x{2}_{3}.{4}", folder, width, height, counter, format.ToString().ToLower());
+        var camera = "Front";
+        if(!CameraSwitch.USE_FRONT_CAM){
+          camera = "Rear";
+        }
+
+        // Get Current Unix Timestamp:
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        long timestamp = (long)(System.DateTime.UtcNow - epochStart).TotalMilliseconds;
+
+        // Create Filename:
+        var filename = string.Format("{0}-{1}-{2}-{3}-{4}.{5}", TankMovement.CURR_NAME, camera, 0, TankMovement.CURR_COMMLID, timestamp, format.ToString().ToLower());
 
         // up counter for next call
         ++counter;
@@ -81,8 +96,9 @@ public class ScreenRecorder : MonoBehaviour
         captureScreenshot |= Input.GetKeyDown("k");
         captureVideo = Input.GetKey("v");
 
-        if (captureScreenshot || captureVideo)
+        if (captureScreenshot || captureVideo || ScreenRecorder.SCREEN_CAP || !initLandingPhoto && Time.realtimeSinceStartup > 4)
         {
+            initLandingPhoto = true;
             captureScreenshot = false;
 
             // hide optional game object if set
@@ -96,13 +112,13 @@ public class ScreenRecorder : MonoBehaviour
                 renderTexture = new RenderTexture(captureWidth, captureHeight, 24);
                 screenShot = new Texture2D(captureWidth, captureHeight, TextureFormat.RGB24, false);
             }
-            
+
             // get main camera and manually render scene into rt
             Camera camera = this.GetComponent<Camera>(); // NOTE: added because there was no reference to camera in original script; must add this script to Camera
             camera.targetTexture = renderTexture;
             camera.Render();
 
-            // read pixels will read from the currently active render texture so make our offscreen 
+            // read pixels will read from the currently active render texture so make our offscreen
             // render texture active and then read the pixels
             RenderTexture.active = renderTexture;
             screenShot.ReadPixels(rect, 0, 0);
@@ -158,6 +174,8 @@ public class ScreenRecorder : MonoBehaviour
                 renderTexture = null;
                 screenShot = null;
             }
+            ScreenRecorder.SCREEN_CAP = false;
+            CameraSwitch.USE_FRONT_CAM = !CameraSwitch.USE_FRONT_CAM;
         }
     }
 }

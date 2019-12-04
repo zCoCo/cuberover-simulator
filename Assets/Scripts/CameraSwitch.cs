@@ -4,66 +4,61 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
+    public static bool USE_FRONT_CAM = true;
+
     Character_Input characterInput;
     Rigidbody mybody;
 
-    //public float speed;
+    public Camera frontCam;
+    public Camera rearCam;
+    public GameObject Lwheel_front;
+    public GameObject Rwheel_front;
+    public GameObject Lwheel_rear;
+    public GameObject Rwheel_rear;
 
-    public Camera fpsCam;
-    public Camera tpsCam;
-    public GameObject Lwheel;
-    public GameObject Rwheel;
-
-    bool fpsView = true;
+    bool frontView = true;
     bool locked = false;
 
-
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         characterInput = GetComponent<Character_Input>();
         mybody = GetComponent<Rigidbody>();
-
-        //Cursor.lockState = CursorLockMode.Locked;
+        UpdateCameraView(); // Initialize (make sure only one camera is active and wheels are hidden)
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //float horizontal = Input.GetAxis("Horizontal");
-        //float vertical = Input.GetAxis("Vertical");
-
-        //Vector3 moveDirection = new Vector3(0f, 0f, vertical) * speed * Time.deltaTime;
-        //transform.Translate(moveDirection);
-
-        if (Input.GetKeyDown(characterInput.toggleCam))
-        {
+    void Update(){
+        if (Input.GetKeyDown(characterInput.toggleCam)){
             ToggleCamera();
-            
         }
-        if (locked == true)
-        {
+        if(CameraSwitch.USE_FRONT_CAM != frontView){ // allow for external manipulation
+          frontView = CameraSwitch.USE_FRONT_CAM;
+          UpdateCameraView();
+          if(!CameraSwitch.USE_FRONT_CAM){
+            ScreenRecorder.SCREEN_CAP = true; // take second pic
+          }
+        }
+        if (locked == true){
             Cursor.lockState = CursorLockMode.Locked;
-            Lwheel.SetActive(true);
-            Rwheel.SetActive(true);
-        }
-        else
-        {
+        } else{
             Cursor.lockState = CursorLockMode.None;
-            Lwheel.SetActive(false);
-            Rwheel.SetActive(false);
         }
-
     }
 
+    void ToggleCamera(){
+        frontView = !frontView;
+        CameraSwitch.USE_FRONT_CAM = frontView;
+        //locked = !locked;
+        UpdateCameraView();
+    }
 
-
-    void ToggleCamera()
-    {
-        fpsView = !fpsView;
-        fpsCam.gameObject.SetActive(fpsView);
-        tpsCam.gameObject.SetActive(!fpsView);
-        locked = !locked;
-        
+    void UpdateCameraView(){
+      frontCam.gameObject.SetActive(frontView);
+      rearCam.gameObject.SetActive(!frontView);
+      // Hide Wheels which would be in view:
+      Lwheel_front.SetActive(!frontView);
+      Rwheel_front.SetActive(!frontView);
+      Lwheel_rear.SetActive(frontView);
+      Rwheel_rear.SetActive(frontView);
     }
 }
