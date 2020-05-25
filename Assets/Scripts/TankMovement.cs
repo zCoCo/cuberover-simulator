@@ -19,7 +19,6 @@ public class TankMovement : MonoBehaviour
     public float moveDirection = 1F; // >0 for forward
     public float turnDirection = 1F; // >0 for CW
     private float t_elapsed = 0f; // time elapsed during the current move
-    private float t_elapsed_commUpdate = 0f; // time elapsed since last command update
     private int last_commandHistory_length = 0; // length of command history at last update
 
 
@@ -40,6 +39,7 @@ public class TankMovement : MonoBehaviour
 
     private void Awake()
     {
+        Application.runInBackground = true; // Allow commands to be received and processed even if not in focus
         m_Rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -63,13 +63,16 @@ public class TankMovement : MonoBehaviour
 
     private void Start()
     {
-        //sets up the axis
+        // Set up the axes
         m_MovementAxisName = "Vertical";
         m_TurnAxisName = "Horizontal";
 
         // Initialize Command History Length:
         List<Dictionary<string,object>> data = CSVReader.Read("commands");
         last_commandHistory_length = data.Count+1;
+
+        // Start Motion Coroutine:
+        StartCoroutine(ReceiveCommand());
     }
 
 
@@ -77,45 +80,6 @@ public class TankMovement : MonoBehaviour
         // Stores the value of both input axes.
         m_MovementStickValue = Input.GetAxis(m_MovementAxisName); //restore these two lines to regain WASD controls and comment out the following two lines
         m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
-
-        // Update Comms:
-        t_elapsed_commUpdate += Time.deltaTime;
-        if(t_elapsed_commUpdate > 2){ //
-
-        }
-
-        // Every 5sec, check for new commands:
-        if(t_elapsed_commUpdate > 5 && was_moving){
-          List<Dictionary<string,object>> data = CSVReader.Read("commands");
-          var i0 = last_commandHistory_length-1;
-          if(i0<0){
-            i0 = 0;
-          }
-          for(var i=i0; i < data.Count; i++){
-            Debug.Log("amount " + data[i]["amount"] + " " +
-                   "speed " + data[i]["speed"] + " " +
-                   "isTurn " + data[i]["isTurn"]);
-
-            distance = (float)Convert.ToDouble(data[i]["amount"]);
-            m_Speed = (float)Convert.ToDouble(data[i]["speed"]);
-            turn = (float)Convert.ToDouble(data[i]["amount"]);
-            m_TurnSpeed = (float)Convert.ToDouble(data[i]["speed"]);
-            isTurn = Convert.ToInt32(data[i]["isTurn"]) == 1;
-            var dir = (float)Convert.ToDouble(data[i]["dir"]);
-            moveDirection = dir;
-            turnDirection = dir;
-            t_elapsed = 0F; // restart move timer
-
-            TankMovement.CURR_COMMLID = Convert.ToInt32(data[i]["lookupID"]);
-            TankMovement.CURR_NAME = Convert.ToString(data[i]["name"]) + Convert.ToString(CURR_COMMLID);
-
-            Debug.Log(string.Format("Moving ({0}) in {1} for {2} at {3}", isTurn, dir, distance,m_Speed));
-
-            last_commandHistory_length = i+2;
-            t_elapsed_commUpdate = 0F;
-            break;
-          }
-        }
     }
 
     private void FixedUpdate(){
@@ -138,6 +102,43 @@ public class TankMovement : MonoBehaviour
         } else if(!was_moving){
           was_moving = true;
           ScreenRecorder.SCREEN_CAP = true; // trigger screen capture
+        }
+    }
+
+    private IEnumerator ReceiveCommand() {
+        while (true) {
+            // Update Comms:
+            if(was_moving){
+              List<Dictionary<string,object>> data = CSVReader.Read("commands");
+              var i0 = last_commandHistory_length-1;
+              if(i0<0){
+                i0 = 0;
+              }
+              for(int i=i0; i < data.Count; i++){
+                Debug.Log("amount " + data[i]["amount"] + " " +
+                       "speed " + data[i]["speed"] + " " +
+                       "isTurn " + data[i]["isTurn"]);
+
+                distance = (float)Convert.ToDouble(data[i]["amount"]);
+                m_Speed = (float)Convert.ToDouble(data[i]["speed"]);
+                turn = (float)Convert.ToDouble(data[i]["amount"]);
+                m_TurnSpeed = (float)Convert.ToDouble(data[i]["speed"]);
+                isTurn = Convert.ToInt32(data[i]["isTurn"]) == 1;
+                var dir = (float)Convert.ToDouble(data[i]["dir"]);
+                moveDirection = dir;
+                turnDirection = dir;
+                t_elapsed = 0F; // restart move timer
+
+                CURR_COMMLID = Convert.ToInt32(data[i]["lookupID"]);
+                CURR_NAME = Convert.ToString(data[i]["name"]) + Convert.ToString(CURR_COMMLID);
+
+                Debug.Log(string.Format("Moving ({0}) in {1} for {2} at {3}", isTurn, dir, distance,m_Speed));
+
+                last_commandHistory_length = i + 2;
+                // break;
+              }
+            }
+            yield return new WaitForSecondsRealtime(0.5f); // Check for new commands at 2Hz
         }
     }
 
