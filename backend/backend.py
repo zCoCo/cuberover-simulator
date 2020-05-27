@@ -43,6 +43,8 @@ def nameToData(name):
     return data;
 
 
+
+
 def upload_data(f, addr):
     file = DB.fs.put(f);
     data = nameToData(os.path.splitext(addr)[0]);

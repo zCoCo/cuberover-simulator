@@ -114,7 +114,8 @@ public class TankMovement : MonoBehaviour
               if(i0<0){
                 i0 = 0;
               }
-              for(int i=i0; i < data.Count; i++){
+              int i = i0;
+              if(i < data.Count){
                 Debug.Log("amount " + data[i]["amount"] + " " +
                        "speed " + data[i]["speed"] + " " +
                        "isTurn " + data[i]["isTurn"]);
