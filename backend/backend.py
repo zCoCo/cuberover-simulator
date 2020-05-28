@@ -10,7 +10,7 @@ from mongo_db_collection import MongoDbCollection
 import csv;
 
 ### SETTINGS: ###
-MISSION = 'paper123'
+MISSION = 'paper200528'
 targDir = "../"  # relative location of images directory
 COMMANDS_HISTORY = "../Assets/Resources/commands.csv" # relative location of csv file containing log of all sent commands
 
