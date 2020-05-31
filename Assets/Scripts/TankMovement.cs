@@ -1,25 +1,61 @@
-﻿using UnityEngine;
+﻿/*
+ * Controls and Logs the Rover's Movements using Tank-like Skid Steer
+ *
+ * Author: Oskar Schlueb (NA)
+ * Last Update: 5/31/2020, Colombo (CMU)
+ */
+
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 public class TankMovement : MonoBehaviour
 {
-    public static string CURR_NAME = "LandingSite";
-    public static int CURR_COMMLID = 0;
+    [Header("Mechanical Properties")]
+    [Tooltip("Used for odometry.")]
+    public GameObject wheel_sample;
+    [Tooltip("Functional Radius of Wheel [cm] (if null, uses bounding box of wheel)")]
+    public float? wheel_radius;
 
-    private bool was_moving = true;
+    [Header("Slippage Simulation")]
+    [Range(0, 1), Tooltip("Ratio of (Distance from Wheel Rotations - Distance Travelled)/Distance Travelled. Note: Distance travelled is measured along only the intended axis of motion.")]
+    public float longitudinal_slip_ratio;
+    [Tooltip("Meters to right per meter forward")]
+    public float lateral_deviation_factor;
+    [Tooltip("Standard Deviation [deg] when attempting a turn (achieved angle distribution with commanded angle as mean)")]
+    public float turning_std;
 
-    private float m_Speed = 1f;                 // How fast the rover moves forward and back. Remains constant.
+    [HideInInspector]
+    public bool was_moving = true;
+
+    [HideInInspector]
+    public float m_Speed = 1f;                 // How fast the rover moves forward and back. Remains constant.
+    [HideInInspector]
     public float m_TurnSpeed = 30f;            // How fast the rover turns in degrees per second.
-                                                // Audio to play when the tank is moving.
+                                               // Audio to play when the tank is moving.
+    [HideInInspector]
     public float distance; //in cm
+    [HideInInspector]
     public float turn; // degree
+    [HideInInspector]
     public bool isTurn = false; // whether the current move is a turn
+    [HideInInspector]
     public float moveDirection = 1F; // >0 for forward
+    [HideInInspector]
     public float turnDirection = 1F; // >0 for CW
-    private float t_elapsed = 0f; // time elapsed during the current move
-    private int last_commandHistory_length = 0; // length of command history at last update
+    [HideInInspector]
+    public float t_elapsed = 0f; // time elapsed during the current move
+
+    [HideInInspector]
+    public Vector4 start_position; // origin position on the surface after deployment (x,y,z,θ)
+    public Vector3 predeploy_position; // position of the rover before deployment
+    public Quaternion predeploy_rotation; // rotation of the rover before deployment
+
+    // Total Absolute Path Length Traversed for x=linear moves and
+    // y=angular moves. Note: Fwd 1m then Back 1m gives a PathLength of 2m.
+    [HideInInspector]
+    public Vector2 path_length;
 
 
     private string m_MovementAxisName;          // The name of the input axis for moving forward and back.
@@ -28,19 +64,22 @@ public class TankMovement : MonoBehaviour
     private float m_MovementStickValue;         // The current value of the movement stick control (WASD override)
     private float m_TurnStickValue;             // The current value of the turn input (WASD override)
 
-    /*
-     instructions:
-
-     m_speed is constant at 1 but manipulate distance bc dis at 2 goes 2cm/sec and dis of 3 goes 3cm/sec. turnspeed @30 goes 30deg/sec and turn is either -1,0,1 to indicate l/r
-     the outside code being written should change the distance, turn, and turnspeed variables. Unity does not have sleep commands that would work best to calculate the time it should run in order to go the correct distance so
-     if the code could do that on that end it would work flawlessly. As in when inputted 1 for distance, it would change that variable then wait 1 sec then automatially send 0 to stop the rover. Or else the rovver will continuesly move at a rate of 1cm/sec.
-
-    */
+    private CameraRecorder recorder;
+    private BackendConnection backend;
+    private Freezer freezer;
 
     private void Awake()
     {
-        Application.runInBackground = true; // Allow commands to be received and processed even if not in focus
         m_Rigidbody = GetComponent<Rigidbody>();
+        recorder = GetComponent<CameraRecorder>();
+        backend = GetComponent<BackendConnection>();
+        freezer = GetComponent<Freezer>();
+
+        freezer.freeze = true; // freeze in space (undeployed)
+
+        // Set up the axes
+        m_MovementAxisName = "Vertical";
+        m_TurnAxisName = "Horizontal";
     }
 
 
@@ -61,35 +100,75 @@ public class TankMovement : MonoBehaviour
         m_Rigidbody.isKinematic = true;
     }
 
-    private void Start()
+    // Trigger Deploy by a Button Press (rather than command from backend):
+    public void DeployByButton()
     {
-        // Set up the axes
-        m_MovementAxisName = "Vertical";
-        m_TurnAxisName = "Horizontal";
-
-        // Initialize Command History Length:
-        List<Dictionary<string,object>> data = CSVReader.Read("commands");
-        last_commandHistory_length = data.Count+1;
-
-        // Start Motion Coroutine:
-        StartCoroutine(ReceiveCommand());
+        backend.CURR_NAME = "Deploy";
+        Deploy();
     }
 
+    // Deploy Rover from Peregrine
+    public void Deploy()
+    {
+        // Capture Predeployment state:
+        predeploy_position = m_Rigidbody.position;
+        predeploy_rotation = m_Rigidbody.rotation;
+        // Deploy:
+        freezer.freeze = false; // Unfreeze (disable constraints)
+        // Perform Post-Deployment Operations:
+        StartCoroutine(AfterDeploy());
+    }
+    // After the Rover has been Successfully Deployed and Landed:
+    IEnumerator AfterDeploy()
+    {
+        yield return new WaitForSeconds(4); // TODO: Perform an accelerometer (IMU) check
+        // Log Deployment Location:
+        start_position = GetLocalizationPosition();
+        // Capture Image of Deployment Site:
+        recorder.SCREEN_CAP = true;
+    }
+
+    // Resets the rover to its predeployment state
+    public void UnDeploy()
+    {
+        // TODO: Just reload the scene instead of all this?
+
+        // Return to Predeployment State:
+        m_Rigidbody.MovePosition(predeploy_position);
+        m_Rigidbody.MoveRotation(predeploy_rotation);
+
+        // Constrain Rover:
+        freezer.freeze = true;
+
+        // Reset Path-Dependent Data / States:
+        path_length = new Vector2();
+        backend.Reset();
+        recorder.Reset();
+    }
+
+    private void Start()
+    {
+        if(wheel_radius == null)
+        {
+            Vector3 wheel_bounds = wheel_sample.GetComponent<Renderer>().bounds.size;
+            wheel_radius = Mathf.Max(wheel_bounds.x, wheel_bounds.y, wheel_bounds.z)/2 * 10; // *10 to convert mm->cm
+        }
+    }
 
     private void Update(){
         // Stores the value of both input axes.
-        m_MovementStickValue = Input.GetAxis(m_MovementAxisName); //restore these two lines to regain WASD controls and comment out the following two lines
+        m_MovementStickValue = Input.GetAxis(m_MovementAxisName);
         m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
     }
 
     private void FixedUpdate(){
         // Perform Move:
-        t_elapsed += Time.deltaTime;
-        if(t_elapsed <= distance/m_Speed && !isTurn){
+        t_elapsed += Time.fixedDeltaTime;
+        if(!isTurn && t_elapsed <= distance/m_Speed){
           // commanded move is still active
           was_moving = false;
           Move(moveDirection);
-        } else if(t_elapsed <= turn/m_TurnSpeed && isTurn){
+        } else if(isTurn && t_elapsed <= turn/m_TurnSpeed){
           // commanded turn is still active
           was_moving = false;
           Turn(turnDirection);
@@ -97,56 +176,27 @@ public class TankMovement : MonoBehaviour
           // override movement is being overridden with WASD stick control
           was_moving = false;
           m_Speed = 50;
+          backend.CURR_NAME = "ARTEMIS_CorrectiveManeuver"; 
           Move(m_MovementStickValue); // div by 3 semi-arbitrarily for better control authority
           Turn(m_TurnStickValue);
         } else if(!was_moving){
           was_moving = true;
-          ScreenRecorder.SCREEN_CAP = true; // trigger screen capture
-        }
-    }
-
-    private IEnumerator ReceiveCommand() {
-        while (true) {
-            // Update Comms:
-            if(was_moving){
-              List<Dictionary<string,object>> data = CSVReader.Read("commands");
-              var i0 = last_commandHistory_length-1;
-              if(i0<0){
-                i0 = 0;
-              }
-              int i = i0;
-              if(i < data.Count){
-                Debug.Log("amount " + data[i]["amount"] + " " +
-                       "speed " + data[i]["speed"] + " " +
-                       "isTurn " + data[i]["isTurn"]);
-
-                distance = (float)Convert.ToDouble(data[i]["amount"]);
-                m_Speed = (float)Convert.ToDouble(data[i]["speed"]);
-                turn = (float)Convert.ToDouble(data[i]["amount"]);
-                m_TurnSpeed = (float)Convert.ToDouble(data[i]["speed"]);
-                isTurn = Convert.ToInt32(data[i]["isTurn"]) == 1;
-                var dir = (float)Convert.ToDouble(data[i]["dir"]);
-                moveDirection = dir;
-                turnDirection = dir;
-                t_elapsed = 0F; // restart move timer
-
-                CURR_COMMLID = Convert.ToInt32(data[i]["lookupID"]);
-                CURR_NAME = Convert.ToString(data[i]["name"]) + Convert.ToString(CURR_COMMLID);
-
-                Debug.Log(string.Format("Moving ({0}) in {1} for {2} at {3}", isTurn, dir, distance,m_Speed));
-
-                last_commandHistory_length = i + 2;
-                // break;
-              }
-            }
-            yield return new WaitForSecondsRealtime(0.5f); // Check for new commands at 2Hz
+          recorder.SCREEN_CAP = true; // trigger screen capture
         }
     }
 
     // Perform linear movement update. Forward if direction>0, backwards if <0. direction can take values besides (1,0,-1) for WASD override control.
     private void Move(float direction){
+        float mag = m_Speed * Time.fixedDeltaTime / 100; // mult by 10 to convert cm to mm
         // Creates a vector in the direction the rover is facing with a magnitude based on the input, speed and the time between frames.
-        Vector3 movement = direction * transform.forward * m_Speed * Time.deltaTime / 100; // mult by 10 to convert cm to mm
+        Vector3 movement = direction * mag * transform.forward;
+        // Simulate Longitudinal Slip:
+        movement /= (1 + longitudinal_slip_ratio);
+        // Simulate Lateral Slip:
+        movement += direction * lateral_deviation_factor * mag * transform.right; // still mult by direction since is to absolute left (when driving backwards).
+
+        // Update Path Length (Odometers) (w/out slip):
+        path_length[0] += Mathf.Abs(mag);
 
         // Applies this movement to the rigidbody's position.
         m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
@@ -155,12 +205,31 @@ public class TankMovement : MonoBehaviour
     // Perform rotation update. CCW if direction>0, CW if <0. direction can take values besides (1,0,-1) for WASD override control.
     private void Turn(float direction){
         // Determines the number of degrees to be turned based on the input, speed and time between frames.
-        float turn = direction * m_TurnSpeed * Time.deltaTime;
+        float mag = direction * m_TurnSpeed * Time.fixedDeltaTime;
+
+        // Update Path Length (Odometers) (w/out slip):
+        path_length[1] += Mathf.Abs(mag);
+
+        // Simulate Turning Inaccuracies:
+        mag += Util.NormRand(0, turning_std, 5);
 
         // Makes this into a rotation in the y axis.
-        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+        Quaternion turnRotation = Quaternion.Euler(0f, mag, 0f);
 
         // Applies this rotation to the rigidbody's rotation.
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+    }
+
+    // Returns the Rover's Displacement (3D Translational and heading = (x,y,z,θ)) since deployment:
+    public Vector4 GetDisplacement()
+    {
+        return GetLocalizationPosition() - start_position;
+    }
+    
+    // Returns the Absolute (arbitrary world frame reference) (x,y,z,θ) Coordinates of the Rover (translational and heading)
+    private Vector4 GetLocalizationPosition()
+    {
+        float deg = 180f / Mathf.PI;
+        return new Vector4(m_Rigidbody.position.x, m_Rigidbody.position.y, m_Rigidbody.position.z, Mathf.Atan2(Mathf.Sin(m_Rigidbody.rotation.eulerAngles.y*deg), Mathf.Cos(m_Rigidbody.rotation.eulerAngles.y*deg))/deg);
     }
 }

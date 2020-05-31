@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Toggles the Active Camera
+ *
+ * Author: Oskar Schlueb (NA)
+ * Last Update: 5/31/2020, Colombo (CMU)
+ *
+ * @TODO: Absorb this into CameraRecorder.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +16,10 @@ public class CameraSwitch : MonoBehaviour
     public static bool USE_FRONT_CAM = true;
 
     Character_Input characterInput;
-    Rigidbody mybody;
 
     public Camera frontCam;
     public Camera rearCam;
+    public Camera depthCam;
     public GameObject Lwheel_front;
     public GameObject Rwheel_front;
     public GameObject Lwheel_rear;
@@ -19,11 +28,13 @@ public class CameraSwitch : MonoBehaviour
     bool frontView = true;
     bool locked = false;
 
+    private CameraRecorder recorder;
+
     // Start is called before the first frame update
     void Start(){
         characterInput = GetComponent<Character_Input>();
-        mybody = GetComponent<Rigidbody>();
-        UpdateCameraView(); // Initialize (make sure only one camera is active and wheels are hidden)
+        recorder = GetComponent<CameraRecorder>();
+        UpdateCameraView(); // Initialize (make sure only one camera is active and appropriate wheels are hidden)
     }
 
     // Update is called once per frame
@@ -35,7 +46,7 @@ public class CameraSwitch : MonoBehaviour
           frontView = CameraSwitch.USE_FRONT_CAM;
           UpdateCameraView();
           if(!CameraSwitch.USE_FRONT_CAM){
-            ScreenRecorder.SCREEN_CAP = true; // take second pic
+            recorder.SCREEN_CAP = true; // take second pic
           }
         }
         if (locked == true){

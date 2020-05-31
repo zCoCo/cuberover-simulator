@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Controls a Third Person View Camera around the Rover
+ *
+ * Author: Oskar Schlueb (NA)
+ * Last Update: 08/2019, Schlueb (NA)
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

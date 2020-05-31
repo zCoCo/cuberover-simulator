@@ -255,3 +255,5 @@ lookupID,name,amount,speed,isTurn,dir
 18,TurnLeft,139,90,1,-11,TurnLeft,20,90,1,-1
 2,TurnRight,20,90,1,1
 3,MoveBackward,2,20,0,-1
+4,MoveForward,10,10,0,1
+5,MoveBackward,10,10,0,-1
