@@ -2,7 +2,7 @@
  * Records the Views from the Rover's Cameras when Triggered
  *
  * Author: Oskar Schlueb (NA)
- * Last Update: 5/31/2020, Colombo (CMU)
+ * Last Update: 6/2/2020, Colombo (CMU)
  */
 
 using UnityEngine;
@@ -16,6 +16,7 @@ using System;
 // You can compile these images into a video using ffmpeg:
 // ffmpeg -i screen_3840x2160_%d.ppm -y test.avi
 
+[AddComponentMenu("Iris/Rover/Camera/CameraRecorder")] // Put in add component menu in Unity editor
 public class CameraRecorder : MonoBehaviour
 {
     [HideInInspector]
@@ -48,7 +49,6 @@ public class CameraRecorder : MonoBehaviour
     private Rect rect;
     private RenderTexture renderTexture;
     private Texture2D screenShot;
-    private int counter; // image #
 
     private bool initLandingPhoto = false; // Whether an initial photo has been taken of the landing site
 
@@ -56,32 +56,19 @@ public class CameraRecorder : MonoBehaviour
     private bool captureScreenshot = false;
     private bool captureVideo = false;
 
+    private TankMovement movement;
     private BackendConnection backend;
+
+    private bool export_images = false; // Whether to save (export) images
+    // Set export images externally (from button)
+    public void SetImageExport(bool export)
+    {
+        export_images = export;
+    }
 
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
     {
-        // if folder not specified by now use a good default
-        if (folder == null || folder.Length == 0)
-        {
-            folder = Application.dataPath;
-            if (Application.isEditor)
-            {
-                // put screenshots in folder above asset path so unity doesn't index the files
-                var stringPath = folder + "/..";
-                folder = Path.GetFullPath(stringPath);
-            }
-            folder += "/screenshots";
-
-            // make sure directoroy exists
-            System.IO.Directory.CreateDirectory(folder);
-
-            // count number of files of specified format in folder <- FIXME: why? (counter never read)
-            string mask = string.Format("screen_{0}x{1}*.{2}", width, height, format.ToString().ToLower());
-            counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
-        }
-
-        // use width, height, and counter for unique file name
         var cam = "Front";
         if(!CameraSwitch.USE_FRONT_CAM){
           cam = "Rear";
@@ -92,10 +79,7 @@ public class CameraRecorder : MonoBehaviour
         long timestamp = (long)(System.DateTime.UtcNow - epochStart).TotalMilliseconds;
 
         // Create Filename:
-        var filename = string.Format("{0}-{1}-{2}-{3}-{4}.{5}", backend.CURR_NAME, cam, 0, backend.CURR_COMMLID, timestamp, format.ToString().ToLower());
-
-        // up counter for next call
-        ++counter;
+        var filename = string.Format("{0}-{1}-{2}-{3}-{4}.{5}", backend.CURR_COMMLID, backend.CURR_NAME, cam, 0, timestamp, format.ToString().ToLower());
 
         // return unique filename
         return filename;
@@ -108,11 +92,12 @@ public class CameraRecorder : MonoBehaviour
 
     private void Start()
     {
+        movement = GetComponent<TankMovement>();
         backend = GetComponent<BackendConnection>();
     }
 
     // Returns to initial (just landed) state:
-    public void Reset()
+    public void Reinit()
     {
         initLandingPhoto = false;
     }
@@ -123,7 +108,7 @@ public class CameraRecorder : MonoBehaviour
         captureScreenshot |= Input.GetKeyDown("k");
         captureVideo = Input.GetKey("v");
 
-        if (captureScreenshot || captureVideo || SCREEN_CAP || !initLandingPhoto && Time.realtimeSinceStartup > 1)
+        if (export_images && (captureScreenshot || captureVideo || SCREEN_CAP || !initLandingPhoto && !movement.Deployed && Time.realtimeSinceStartup > 1))
         {
             initLandingPhoto = true;
             captureScreenshot = false;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Iris/Environment/CubeField")] // Put in add component menu in Unity editor
 public class CubeField : MonoBehaviour
 {
     [Range(1, 20)]

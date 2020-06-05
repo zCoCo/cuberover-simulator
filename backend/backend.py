@@ -10,7 +10,7 @@ from mongo_db_collection import MongoDbCollection
 import csv;
 
 ### SETTINGS: ###
-MISSION = 'paper200528'
+MISSION = 'paper2006042'
 targDir = "../"  # relative location of images directory
 COMMANDS_HISTORY = "../Assets/Resources/commands.csv" # relative location of csv file containing log of all sent commands
 
@@ -26,15 +26,15 @@ pp = pprint.PrettyPrinter(indent=2)
 def nameToData(name):
     """
     Extracts ImageData from the Given Filename. Filename must take the form:
-    NAME-CAMERA-lookupID-CommandLookupID-unixTimestamp
+    CommandLookupID-NAME-CAMERA-lookupID-unixTimestamp
     """
     data = dict();
     features = name.split('-');
     if len(features) and len(features) == 5:
-        [name,camera,lookupID,commandLookupID,sendTime] = features;
+        [commandLookupID,name,camera,lookupID,sendTime] = features;
         data["name"] = name;
         data["camera"] = camera;
-        data["lookupID"] = int(lookupID);
+        data["lookupID"] = int(lookupID); # Gets overridden with count+1 when written to DB
         data["commandLookupID"] = int(commandLookupID);
         data["sendTime"] = int(sendTime);
     else:
@@ -51,8 +51,8 @@ def upload_data(f, addr):
     print("Attempting upload of %s" % addr)
     if data is not None:
         data["file"] = file;  # file location in GridFS
+        commands.update(data['commandLookupID'], {'stateFp': 'SUCC_EXEC'}) # Do this first so it returns first
         DB.write(data);
-        commands.update(data['commandLookupID'], {'stateFp': 'SUCC_EXEC'})
         print("#### Uploaded %s ####" % addr)
         pp.pprint(data)
 
@@ -111,19 +111,32 @@ class WatchCommands(Thread):
                 writer = csv.writer(file, delimiter=',', quotechar='"')
                 if c['name'] == 'MoveForward' or c['name'] == 'MoveBackward':
                     turn = 0
-                    amount = 'Distance'
+                    amount = c['args']['Distance']
+                    speed = c['args']['Speed']
                     if c['name'] == 'MoveForward':
                         dir = 1;
                     else:
                         dir = -1;
-                if c['name'] == 'TurnLeft' or c['name'] == 'TurnRight':
+                elif c['name'] == 'TurnLeft' or c['name'] == 'TurnRight':
                     turn = 1
-                    amount = 'Angle'
+                    amount = c['args']['Angle']
+                    speed = c['args']['Speed']
                     if c['name'] == 'TurnLeft':
                         dir = -1;
                     else:
                         dir = 1;
-                writer.writerow([c['lookupID'], c['name'], c['args'][amount], c['args']['Speed'], turn, dir])
+                elif c['name'] == 'ARTEMIS_SetSignalDelay':
+                    amount = c['args']['Delay']
+                    speed = 0
+                    turn = 0
+                    dir = 0
+                else:
+                    amount = 0
+                    speed = 0
+                    turn = 0
+                    dir = 0
+
+                writer.writerow([c['lookupID'], c['name'], amount, speed, turn, dir])
 
 
 UploadNewImages();

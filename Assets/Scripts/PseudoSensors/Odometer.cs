@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Iris/Rover/Sensors/Odometer")] // Put in add component menu in Unity editor
 public class Odometer : MonoBehaviour
 {
     // Use this for initialization

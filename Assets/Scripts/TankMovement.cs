@@ -2,7 +2,7 @@
  * Controls and Logs the Rover's Movements using Tank-like Skid Steer
  *
  * Author: Oskar Schlueb (NA)
- * Last Update: 5/31/2020, Colombo (CMU)
+ * Last Update: 6/3/2020, Colombo (CMU)
  */
 
 using UnityEngine;
@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Iris/Rover/TankMovement")] // Put in add component menu in Unity editor
 public class TankMovement : MonoBehaviour
 {
     [Header("Mechanical Properties")]
@@ -49,13 +50,17 @@ public class TankMovement : MonoBehaviour
 
     [HideInInspector]
     public Vector4 start_position; // origin position on the surface after deployment (x,y,z,θ)
+    [HideInInspector]
+    public Matrix4x4? world_origin; // homog. transform of origin position on the surface after deployment (defaults to identity transform)
+    [HideInInspector]
     public Vector3 predeploy_position; // position of the rover before deployment
+    [HideInInspector]
     public Quaternion predeploy_rotation; // rotation of the rover before deployment
 
     // Total Absolute Path Length Traversed for x=linear moves and
     // y=angular moves. Note: Fwd 1m then Back 1m gives a PathLength of 2m.
     [HideInInspector]
-    public Vector2 path_length;
+    public Vector2 path_length; // [cm,deg]
 
 
     private string m_MovementAxisName;          // The name of the input axis for moving forward and back.
@@ -67,6 +72,8 @@ public class TankMovement : MonoBehaviour
     private CameraRecorder recorder;
     private BackendConnection backend;
     private Freezer freezer;
+
+    public bool Deployed { get; private set; }
 
     private void Awake()
     {
@@ -110,19 +117,24 @@ public class TankMovement : MonoBehaviour
     // Deploy Rover from Peregrine
     public void Deploy()
     {
-        // Capture Predeployment state:
-        predeploy_position = m_Rigidbody.position;
-        predeploy_rotation = m_Rigidbody.rotation;
-        // Deploy:
-        freezer.freeze = false; // Unfreeze (disable constraints)
-        // Perform Post-Deployment Operations:
-        StartCoroutine(AfterDeploy());
+        if (!Deployed)
+        {
+            // Capture Predeployment state:
+            predeploy_position = m_Rigidbody.position;
+            predeploy_rotation = m_Rigidbody.rotation;
+            // Deploy:
+            freezer.freeze = false; // Unfreeze (disable constraints)
+            Deployed = true;
+            // Perform Post-Deployment Operations:
+            StartCoroutine(AfterDeploy());
+        }
     }
     // After the Rover has been Successfully Deployed and Landed:
     IEnumerator AfterDeploy()
     {
         yield return new WaitForSeconds(4); // TODO: Perform an accelerometer (IMU) check
         // Log Deployment Location:
+        world_origin = m_Rigidbody.transform.worldToLocalMatrix;
         start_position = GetLocalizationPosition();
         // Capture Image of Deployment Site:
         recorder.SCREEN_CAP = true;
@@ -133,17 +145,21 @@ public class TankMovement : MonoBehaviour
     {
         // TODO: Just reload the scene instead of all this?
 
-        // Return to Predeployment State:
-        m_Rigidbody.MovePosition(predeploy_position);
-        m_Rigidbody.MoveRotation(predeploy_rotation);
+        if (Deployed)
+        {
+            // Return to Predeployment State:
+            m_Rigidbody.transform.position = (predeploy_position);
+            m_Rigidbody.MoveRotation(predeploy_rotation);
 
-        // Constrain Rover:
-        freezer.freeze = true;
+            // Constrain Rover:
+            freezer.freeze = true;
+            Deployed = false;
 
-        // Reset Path-Dependent Data / States:
-        path_length = new Vector2();
-        backend.Reset();
-        recorder.Reset();
+            // Reset Path-Dependent Data / States:
+            path_length = new Vector2();
+            backend.Reinit();
+            recorder.Reinit();
+        }
     }
 
     private void Start()
@@ -196,7 +212,7 @@ public class TankMovement : MonoBehaviour
         movement += direction * lateral_deviation_factor * mag * transform.right; // still mult by direction since is to absolute left (when driving backwards).
 
         // Update Path Length (Odometers) (w/out slip):
-        path_length[0] += Mathf.Abs(mag);
+        path_length[0] += Mathf.Abs(mag*1e2f);
 
         // Applies this movement to the rigidbody's position.
         m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
@@ -220,16 +236,29 @@ public class TankMovement : MonoBehaviour
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
 
-    // Returns the Rover's Displacement (3D Translational and heading = (x,y,z,θ)) since deployment:
+    // Returns the Rover's Displacement (3D Translational and heading =
+    // (x,y,z,θ)) since deployment in [cm,cm,cm,deg]:
     public Vector4 GetDisplacement()
     {
-        return GetLocalizationPosition() - start_position;
+        return (GetLocalizationPosition() - start_position);
     }
-    
-    // Returns the Absolute (arbitrary world frame reference) (x,y,z,θ) Coordinates of the Rover (translational and heading)
+
+    // Returns the Absolute (arbitrary world frame reference) (x,y,z,θ) [cm,cm,cm,deg]: Coordinates of the Rover (translational and heading)
     private Vector4 GetLocalizationPosition()
     {
-        float deg = 180f / Mathf.PI;
-        return new Vector4(m_Rigidbody.position.x, m_Rigidbody.position.y, m_Rigidbody.position.z, Mathf.Atan2(Mathf.Sin(m_Rigidbody.rotation.eulerAngles.y*deg), Mathf.Cos(m_Rigidbody.rotation.eulerAngles.y*deg))/deg);
+        float deg = Mathf.PI / 180f; // deg->rad
+        float mm = 1e-1f; // mm -> cm
+
+        Vector3 rPw;
+        if (world_origin != null)
+        {
+            rPw = world_origin.GetValueOrDefault().MultiplyPoint3x4(m_Rigidbody.position); // Rover position w.r.t. world frame on surface (world_origin)
+        }
+        else
+        {
+            rPw = m_Rigidbody.position;
+        }
+        
+        return new Vector4(rPw.x*mm, rPw.y*mm, rPw.z*mm, Mathf.Atan2(Mathf.Sin(m_Rigidbody.rotation.eulerAngles.y*deg), Mathf.Cos(m_Rigidbody.rotation.eulerAngles.y*deg))/deg);
     }
 }

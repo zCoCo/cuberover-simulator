@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d85e539148e4943f7a9aeab411773b49
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Barlow ExtraBold
+  fontNames:
+  - Barlow ExtraBold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 19cf82cfda8424f9d986c11be06df451, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

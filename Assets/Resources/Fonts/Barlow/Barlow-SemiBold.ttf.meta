@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6d1170ff282e84744bb70650215db359
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Barlow SemiBold
+  fontNames:
+  - Barlow SemiBold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3f21c6c1cfd404fb392ff4dbf1c0ec16, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

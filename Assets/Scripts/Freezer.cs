@@ -1,6 +1,7 @@
 ﻿// Freezes a GameObject in Space
 using UnityEngine;
 
+[AddComponentMenu("Iris/Util/Freezer")] // Put in add component menu in Unity editor
 public class Freezer : MonoBehaviour
 {
     public bool freeze; // public bool allows for toggling in Inspector

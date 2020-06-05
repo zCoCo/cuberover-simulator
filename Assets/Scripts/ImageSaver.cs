@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(ImageSynthesis))]
+[AddComponentMenu("Iris/Util/ImageSaver")] // Put in add component menu in Unity editor
 public class ImageSaver : Editor
 {
     public override void OnInspectorGUI()
@@ -19,4 +20,4 @@ public class ImageSaver : Editor
             imageSynthesis.Save(imageSynthesis.filename, width: (int)gameViewSize.x, height: (int)gameViewSize.y, imageSynthesis.filepath);
         }
     }
-}
+}*/

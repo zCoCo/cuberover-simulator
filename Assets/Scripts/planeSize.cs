@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Iris/Util/PlaneSize")] // Put in add component menu in Unity editor
 public class planeSize : MonoBehaviour
 {
     public Vector3 COLLIDER_SIZE;

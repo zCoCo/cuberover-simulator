@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
+[AddComponentMenu("Iris/Rover/Communication/CSVReader")] // Put in add component menu in Unity editor
 public class CSVReader
 {
     static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";

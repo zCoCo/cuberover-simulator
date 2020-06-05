@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Iris/Rover/Camera/CameraSwitch")] // Put in add component menu in Unity editor
 public class CameraSwitch : MonoBehaviour
 {
     public static bool USE_FRONT_CAM = true;

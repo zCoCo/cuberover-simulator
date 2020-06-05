@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Iris/Rover/Sensors/IMU_6DOF")] // Put in add component menu in Unity editor
 public class IMU_6DOF : MonoBehaviour
 {
     // Use this for initialization

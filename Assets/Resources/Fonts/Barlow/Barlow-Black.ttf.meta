@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: eeaba105225904df29c5229f4d98d72c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Barlow Black
+  fontNames:
+  - Barlow Black
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1839ff142a07843aea53829973824866, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Iris/Rover/Sensors/ThermalGrid")] // Put in add component menu in Unity editor
 public class ThermalGrid : MonoBehaviour
 {
     // Use this for initialization

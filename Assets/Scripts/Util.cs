@@ -2,6 +2,7 @@
 
 using UnityEngine;
 
+[AddComponentMenu("Iris/Util/CommonUtilities")] // Put in add component menu in Unity editor
 public static class Util
 {
     // Returns a random number along the normal distribution defined by the
@@ -27,5 +28,12 @@ public static class Util
         }
 
         return z * sig + mu;
+    }
+
+
+    // Whether there's a difference between floats a and b
+    public static bool AreDiff(float a, float b)
+    {
+        return Mathf.Abs(a - b) > Mathf.Epsilon;
     }
 }
