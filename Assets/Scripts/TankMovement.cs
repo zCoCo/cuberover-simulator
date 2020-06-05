@@ -143,7 +143,7 @@ public class TankMovement : MonoBehaviour
     // Resets the rover to its predeployment state
     public void UnDeploy()
     {
-        // TODO: Just reload the scene instead of all this?
+        // TODO: Just reload the scene instead of all this? <- bc you'll want to preserve lid for commands?
 
         if (Deployed)
         {

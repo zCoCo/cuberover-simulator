@@ -1022,7 +1022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands_csv_location: commands
-  transmission_delay: 8
+  _transmissionDelay: 8
+  transmission_slider: {fileID: 1871109619}
   CURR_NAME: LandingSite
   CURR_COMMLID: 0
 --- !u!114 &122406648
@@ -7218,7 +7219,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.75
-    y: 0.06476684
+    y: 0.064878896
     width: 0.25
     height: 0.25
   near clip plane: 5.5353312
@@ -12049,6 +12050,12 @@ Transform:
   m_Father: {fileID: 194509847}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
+--- !u!1 &1871109619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305964139894669344, guid: 5554b1e2b6de14dd7b9f55606cc26658,
+    type: 3}
+  m_PrefabInstance: {fileID: 387254885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1871230855
 GameObject:
   m_ObjectHideFlags: 0

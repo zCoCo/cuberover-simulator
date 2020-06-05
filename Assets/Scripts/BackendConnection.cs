@@ -87,7 +87,7 @@ public class BackendConnection : MonoBehaviour
     public void Reinit()
     {
         CURR_NAME = "LandingSite";
-        CURR_COMMLID = 0;
+        // CURR_COMMLID = 0; // Don't reset the counter
     }
 
     private IEnumerator ReceiveCommand()
