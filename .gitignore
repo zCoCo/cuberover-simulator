@@ -5,6 +5,14 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
+# Exported Images
+Images
+# But keep the directories:
+!Images/.gitkeep
+!Images/Raw/.gitkeep
+!Images/Mission/.gitkeep
+!Images/Science/.gitkeep
+
 # Visual Studio cache directory
 .vs/
 

@@ -7,4 +7,7 @@
 ### updated ones from certifi by executing the script found at:
 ### `/Applications/Python <WHATEVER VERSION>/Install Certificates.command`
 ###
+pip
 pymongo >= 3.8.0
+dnspython
+pyzmq

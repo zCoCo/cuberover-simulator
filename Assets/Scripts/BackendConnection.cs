@@ -3,7 +3,7 @@
  * the DB connects the frontend to the backend)
  *
  * Author: Connor W. Colombo (CMU)
- * Last Update: 6/3/2020, Colombo (CMU)
+ * Last Update: 6/7/2020, Colombo (CMU)
  */
 
 using UnityEngine;
@@ -47,6 +47,8 @@ public class BackendConnection : MonoBehaviour
 
     private int last_commandHistory_length = 0; // length of command history at last update
 
+    private System.Diagnostics.Process backend_python_proc; // Backend python process
+
     private bool _connect_to_db;
     public bool ConnectToDB {
         private get => _connect_to_db;
@@ -56,20 +58,23 @@ public class BackendConnection : MonoBehaviour
             {
                 Connect();
             }
+            else
+            {
+                Close();
+            }
         }
     }
 
     private void Awake()
     {
         Application.runInBackground = true; // Allow commands to be received and processed even if not in focus
+        //ExecuteShell("pip3 install - r requirements.txt");
     }
 
     private void Start()
     {
         movement = GetComponent<TankMovement>();
         recorder = GetComponent<CameraRecorder>();
-
-        Connect();
 
         // Start Motion Coroutine:
         StartCoroutine(ReceiveCommand());
@@ -81,6 +86,84 @@ public class BackendConnection : MonoBehaviour
         // Initialize Command History Length:
         List<Dictionary<string, object>> data = CSVReader.Read(commands_csv_location);
         last_commandHistory_length = data.Count + 1;
+
+        string appl = "./iris-artemis-backend-compiled";
+
+        backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
+    }
+
+    // Executes the given shell command. Returns the created process.
+    private System.Diagnostics.Process ExecuteShell(string cmd)
+    {
+
+        string shell = "/bin/bash"; // default for UNIX
+        string argbase = " -c ";
+        switch (Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                shell = "C:\\Windows\\system32\\cmd.exe";
+                argbase = "c/ ";
+                break;
+        }
+
+        System.Diagnostics.Process proc = new System.Diagnostics.Process
+        {
+            StartInfo = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = shell,
+                WorkingDirectory = "./backend",
+                Arguments = argbase + " \"" + cmd + " \" ",
+                UseShellExecute = false,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true,
+                WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal
+            },
+            EnableRaisingEvents = true
+        };
+        proc.Start();
+        //StartCoroutine(ReadBackendError(proc));
+
+        return proc;
+    }
+
+    // Closes Out Database Connection
+    private void Close()
+    {
+        if (backend_python_proc != null && !backend_python_proc.HasExited)
+        {
+            backend_python_proc.Kill();
+        }
+    }
+
+    // Read Output from the Python Process Stream:
+    // TODO: This freezes the main thread
+    private IEnumerator ReadBackendOutput(System.Diagnostics.Process proc)
+    {
+        while (!proc.StandardOutput.EndOfStream)
+        {
+            string line = proc.StandardOutput.ReadLine();
+            Debug.Log(line);
+    
+            // Do something with line
+            yield return new WaitForSeconds(0.5f); // CPU Relief
+        }
+    }
+
+    // Read Errors from the Python Process Stream:
+    // TODO: This freezes the main thread
+    private IEnumerator ReadBackendError(System.Diagnostics.Process proc)
+    {
+        while (!proc.StandardError.EndOfStream)
+        {
+            string line = proc.StandardError.ReadLine();
+            Debug.LogWarning("<SHELL> " + line);
+
+            // Do something with line
+            yield return new WaitForSeconds(0.5f); // CPU Relief
+        }
     }
 
     // Returns to initial (just landed) state:
@@ -154,4 +237,8 @@ public class BackendConnection : MonoBehaviour
         }
     }
 
+    ~BackendConnection()
+    {
+        Close();
+    }
 }
