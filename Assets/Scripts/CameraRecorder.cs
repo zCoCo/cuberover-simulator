@@ -69,6 +69,28 @@ public class CameraRecorder : MonoBehaviour
     // create a unique filename using a one-up variable
     private string uniqueFilename(int width, int height)
     {
+
+        // if folder not specified by now use a good default
+        if (folder == null || folder.Length == 0)
+        {
+            folder = Application.dataPath;
+            if (Application.isEditor)
+            {
+                // put screenshots in folder above asset path so unity doesn't index the files
+                var stringPath = folder + "/..";
+                folder = Path.GetFullPath(stringPath);
+            }
+            folder += "/screenshots";
+
+            // make sure directoroy exists
+            System.IO.Directory.CreateDirectory(folder);
+
+            // count number of files of specified format in folder
+            string mask = string.Format("screen_{0}x{1}*.{2}", width, height, format.ToString().ToLower());
+            int counter = Directory.GetFiles(folder, mask, SearchOption.TopDirectoryOnly).Length;
+        }
+
+
         var cam = "Front";
         if(!CameraSwitch.USE_FRONT_CAM){
           cam = "Rear";

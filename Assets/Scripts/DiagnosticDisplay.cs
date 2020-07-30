@@ -16,16 +16,21 @@ public class DiagnosticDisplay : MonoBehaviour
 
     private BackendConnection backend;
     private TankMovement movement;
+
+    int count;
+
     
     // Start is called before the first frame update
     void Start()
     {
         backend = rover.GetComponent<BackendConnection>();
         movement = rover.GetComponent<TankMovement>();
+
     }
 
     void OnGUI()
     {
+
         GUILayout.BeginArea(new Rect(20, 70, 500, 120));
         GUILayout.Label(string.Format("Command {0}: {1}({2},{3})", backend.CURR_COMMLID, backend.CURR_NAME, (movement.isTurn ? movement.turnDirection * movement.turn : movement.moveDirection * movement.distance), (movement.isTurn ? movement.m_TurnSpeed : movement.m_Speed)));
         GUILayout.Label("----");

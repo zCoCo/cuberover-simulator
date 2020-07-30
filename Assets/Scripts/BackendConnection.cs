@@ -87,7 +87,7 @@ public class BackendConnection : MonoBehaviour
         List<Dictionary<string, object>> data = CSVReader.Read(commands_csv_location);
         last_commandHistory_length = data.Count + 1;
 
-        string appl = "./iris-artemis-backend-compiled";
+        string appl = "python3 backend.py"; //./iris-artemis-backend-compiled
 
         backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
     }
