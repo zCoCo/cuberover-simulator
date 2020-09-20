@@ -1,6 +1,8 @@
 ﻿/*
  * Connects the Rover to the Pseudo-Backend via a CSV log file (kind of like how
- * the DB connects the frontend to the backend)
+ * the DB connects the frontend to the backend).
+ *
+ * NOTE: Telemetry sending is handled over ZeroMQ by TelemetrySender.
  *
  * Author: Connor W. Colombo (CMU)
  * Last Update: 6/7/2020, Colombo (CMU)

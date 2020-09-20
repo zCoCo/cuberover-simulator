@@ -1,9 +1,13 @@
+# Basic (non-DB related) Functionality Tests for backend.py
 import types;
 import sys;
 import getopt;
 import os;
 import time;
+from datetime import datetime;
 from threading import Thread;
+
+import zmq
 
 import csv;
 
@@ -16,6 +20,15 @@ IMAGES_DIR = "../"  # location of images directory
 
 count = 1;
 close = False;
+
+ENABLE_LOGGING = True
+LOG_FILE = 'test.csv'
+# Adds the given entries to the log
+def Log(entries):
+    if ENABLE_LOGGING:
+        with open(LOG_FILE, mode='a') as file:
+            writer = csv.writer(file, delimiter=',', quotechar='"')
+            writer.writerow([datetime.now().strftime("%m/%d/%Y @ %H:%M:%S.%f")[:-3] + ": "] + entries)
 
 def loadArgs(argv):
     global MISSION, PASS, COMMANDS_HISTORY, TELEMETRY_HISTORY, IMAGES_DIR
@@ -54,14 +67,35 @@ class PrintInThreadDelay(Thread):
         while 1:
             time.sleep(1);
 
-            with open('test.csv', mode='a') as file:
-                writer = csv.writer(file, delimiter=',', quotechar='"')
-                writer.writerow([count])
+            Log([count]);
 
             print(count);
             count = count + 1;
             if count > 10:
                 close = True;
+
+class ZMQServer(Thread):
+    def __init__(self):
+        self.context = zmq.Context()
+        self.socket = self.context.socket(zmq.REP)
+        self.socket.bind("tcp://*:5555")
+
+        Thread.__init__(self)
+        self.daemon = True
+        self.start()
+
+    def run(self):
+        Log(["Socket Connected."]);
+        while 1:
+            #  Wait for next request from client
+            message = self.socket.recv()
+            print("Received request: %s" % message)
+
+            # Do "work"
+            time.sleep(0.25)
+
+            #  Send reply back to client
+            self.socket.send(b"World")
 
 def main():
     # Print locations:
@@ -70,16 +104,10 @@ def main():
     print("Telemetry Location: ", TELEMETRY_HISTORY)
     print("Image Store: ", IMAGES_DIR)
 
-    with open('test.csv', mode='a') as file:
-        writer = csv.writer(file, delimiter=',', quotechar='"')
-        writer.writerow([MISSION])
-        writer.writerow([PASS])
-        writer.writerow([COMMANDS_HISTORY])
-        writer.writerow([TELEMETRY_HISTORY])
-        writer.writerow([IMAGES_DIR])
+    Log([MISSION,PASS,COMMANDS_HISTORY,TELEMETRY_HISTORY,IMAGES_DIR])
 
-    print(555);
     PrintInThreadDelay();
+    ZMQServer();
 
     while not close:
         pass  # Keep line open for threads (until close)

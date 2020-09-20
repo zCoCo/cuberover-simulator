@@ -196,7 +196,7 @@ def main():
     print("Command Location: ", COMMANDS_HISTORY)
     print("Telemetry Location: ", TELEMETRY_HISTORY)
     print("Image Store: ", IMAGES_DIR)
-    Log([MISSION,PASS,COMMANDS_HISTORY,TELEMETRY_HISTORY,IMAGES_DIR])
+    Log([MISSION,COMMANDS_HISTORY,TELEMETRY_HISTORY,IMAGES_DIR])
 
     # Connect to the Images Collection:
     DB.images = MongoDbCollection(partition=MISSION, code=PASS, collection=MongoDbCollection.Names.IMAGES);

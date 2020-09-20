@@ -3,6 +3,8 @@ using NetMQ;
 using NetMQ.Sockets;
 using UnityEngine;
 
+// Modified from: https://github.com/off99555/Unity3D-Python-Communication.git (commit d396c2f)
+
 /// <summary>
 ///     Creates a Socket for Communication with ZeroMQ.
 /// </summary>
@@ -19,7 +21,7 @@ public class ZMQSocket : RunAbleThread
         {
             client.Connect("tcp://localhost:5555");
 
-            for (int i = 0; i < 10 && Running; i++)
+            for (int i = 0; i < 100 && Running; i++)
             {
                 Debug.Log("Sending Hello");
                 client.SendFrame("Hello");

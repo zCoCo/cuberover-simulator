@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-// From: https://github.com/off99555/Unity3D-Python-Communication.git (commit d396c2f)
+// Modified from: https://github.com/off99555/Unity3D-Python-Communication.git (commit d396c2f)
 
 /// <summary>
 ///     The superclass that you should derive from. It provides Start() and Stop() method and Running property.

@@ -1,13 +1,42 @@
 time, entries
 0, "Init"
-06/14/2020 @ 01:24:26.810: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
-06/14/2020 @ 01:25:53.240: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
-06/14/2020 @ 01:25:58.588: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
-06/14/2020 @ 01:26:31.492: ,New Command: ,6,ARTEMIS_Deploy,0,0,0,0
-06/14/2020 @ 01:26:31.503: ,New Command: ,6,ARTEMIS_Deploy,0,0,0,0
-06/14/2020 @ 01:27:06.216: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
-06/14/2020 @ 01:27:10.897: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
-06/14/2020 @ 01:27:25.488: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
-06/14/2020 @ 01:27:25.490: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
-06/14/2020 @ 01:27:25.493: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
-06/14/2020 @ 01:27:25.495: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
+06/25/2020 @ 11:13:00.863: ,paper200605,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+06/25/2020 @ 11:13:28.656: ,New Command: ,23,MoveForward,20,5,0,1
+06/25/2020 @ 11:15:21.365: ,New Command: ,24,MoveBackward,200,5,0,-1
+06/25/2020 @ 11:22:52.438: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+06/25/2020 @ 11:28:59.848: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:03.426: ,#### Uploaded 3-MoveBackward-Front-0-1593098938716.jpg ####
+06/25/2020 @ 11:29:04.467: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:05.658: ,#### Uploaded 3-MoveBackward-Rear-0-1593098939785.jpg ####
+06/25/2020 @ 11:29:15.987: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:16.767: ,#### Uploaded 3-MoveForward-Front-0-1593098955022.jpg ####
+06/25/2020 @ 11:29:17.825: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:19.557: ,#### Uploaded 3-MoveForward-Rear-0-1593098955787.jpg ####
+06/25/2020 @ 11:29:20.258: ,#### Uploaded 3-TurnLeft-Front-0-1593098956980.jpg ####
+06/25/2020 @ 11:29:21.322: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:21.975: ,#### Uploaded 3-TurnLeft-Rear-0-1593098957966.jpg ####
+06/25/2020 @ 11:29:22.752: ,#### Uploaded 3-MoveBackward-Front-0-1593098958747.jpg ####
+06/25/2020 @ 11:29:23.372: ,#### Uploaded 3-MoveBackward-Rear-0-1593098959627.jpg ####
+06/25/2020 @ 11:29:24.097: ,#### Uploaded 3-TurnRight-Front-0-1593098960968.jpg ####
+06/25/2020 @ 11:29:25.134: ,NEW IMAGE DETECTED.
+06/25/2020 @ 11:29:25.738: ,#### Uploaded 3-MoveBackward-Rear-0-1593098964863.jpg ####
+06/25/2020 @ 11:29:26.487: ,#### Uploaded 3-TurnRight-Rear-0-1593098961679.jpg ####
+06/25/2020 @ 11:29:27.087: ,#### Uploaded 3-MoveBackward-Front-0-1593098964061.jpg ####
+08/14/2020 @ 14:15:10.504: ,paper,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+08/14/2020 @ 14:19:24.637: ,paper200814,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+08/14/2020 @ 14:26:49.820: ,NEW IMAGE DETECTED.
+08/14/2020 @ 14:26:52.149: ,#### Uploaded 0-LandingSite-Rear-0-1597429609166.jpg ####
+08/14/2020 @ 14:26:54.384: ,#### Uploaded 0-LandingSite-Front-0-1597429608767.jpg ####
+08/14/2020 @ 14:36:34.573: ,paper200814,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+08/14/2020 @ 14:36:54.777: ,NEW IMAGE DETECTED.
+08/14/2020 @ 14:36:57.787: ,#### Uploaded 0-LandingSite-Front-0-1597430214348.jpg ####
+08/14/2020 @ 14:36:59.331: ,#### Uploaded 0-LandingSite-Rear-0-1597430214553.jpg ####
+08/14/2020 @ 14:41:04.178: ,NEW IMAGE DETECTED.
+08/14/2020 @ 14:41:06.911: ,#### Uploaded 0-LandingSite-Rear-0-1597430463661.jpg ####
+08/14/2020 @ 14:41:09.307: ,#### Uploaded 0-LandingSite-Front-0-1597430463186.jpg ####
+08/14/2020 @ 14:49:24.183: ,paper200814,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+08/14/2020 @ 14:49:28.451: ,paper2008142,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+08/14/2020 @ 14:52:08.744: ,NEW IMAGE DETECTED.
+08/14/2020 @ 14:52:13.636: ,#### Uploaded 0-LandingSite-Front-0-1597431127118.jpg ####
+08/14/2020 @ 14:52:14.711: ,NEW IMAGE DETECTED.
+08/14/2020 @ 14:52:16.900: ,#### Uploaded 0-LandingSite-Rear-0-1597431128661.jpg ####

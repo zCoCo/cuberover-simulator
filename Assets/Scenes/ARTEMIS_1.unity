@@ -871,6 +871,8 @@ GameObject:
   - component: {fileID: 122406650}
   - component: {fileID: 122406647}
   - component: {fileID: 122406651}
+  - component: {fileID: 122406652}
+  - component: {fileID: 122406653}
   m_Layer: 0
   m_Name: RoverBody
   m_TagString: Player
@@ -902,7 +904,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122406640}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 207.03506, y: 150, z: 300.26605}
@@ -1091,13 +1093,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCREEN_CAP: 0
   frontCam: {fileID: 1513547216}
-  rearCam: {fileID: 376570025}
+  rearCam: {fileID: 1027979653}
   folder: 
   captureWidth: 2592
   captureHeight: 1944
   hideGameObject: {fileID: 0}
   optimizeForManyScreenshots: 1
   format: 1
+--- !u!114 &122406652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122406640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a61fbc654cb740ceb25dbabe1266e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &122406653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122406640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da6eb262af7247e4a00b9b3694dae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensors:
+    array:
+    - sensor: {fileID: 0}
+      cast_before_send: 0
+      poll_rate: 0
+      target_collection: 
+      bandwidth_allocation: 0
+      time_last_reading: 0
+  socket: 5555
+  collection: None
 --- !u!1001 &124885013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7235,7 +7271,7 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.75
-    y: 0.06544503
+    y: 0.06555944
     width: 0.25
     height: 0.25
   near clip plane: 5.5353312
