@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Sep 20 15:33:22 2020
+
+@author: connorcolombo
+"""
+
+"""
+    TODO:
+        - Fix threading
+        - ZMQ Pipeline w/telem
+        - Fix ground transparency
+        - Image pipeline (w/post-processing - just build the matlab process)
+"""

@@ -904,7 +904,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122406640}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 207.03506, y: 150, z: 300.26605}
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCREEN_CAP: 0
   frontCam: {fileID: 1513547216}
-  rearCam: {fileID: 1027979653}
+  rearCam: {fileID: 376570025}
   folder: 
   captureWidth: 2592
   captureHeight: 1944
@@ -7270,9 +7270,9 @@ Camera:
   m_FocalLength: 2.8
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.75
-    y: 0.06555944
-    width: 0.25
+    x: 0.7500002
+    y: 0.12755102
+    width: 0.24999999
     height: 0.25
   near clip plane: 5.5353312
   far clip plane: 100
