@@ -1,4 +1,4 @@
-﻿using AsyncIO;
+/*using AsyncIO;
 using NetMQ;
 using NetMQ.Sockets;
 using UnityEngine;
@@ -42,4 +42,4 @@ public class ZMQSocket : RunAbleThread
 
         NetMQConfig.Cleanup(); // this line is needed to prevent unity freeze after one use, not sure why yet
     }
-}
+}*/
