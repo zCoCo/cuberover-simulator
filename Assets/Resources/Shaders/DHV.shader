@@ -18,7 +18,7 @@ Shader "ARTEMIS/DHA"
         // SubShader Tags define when and under which conditions a SubShader block or
         // a pass is executed.
         Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalRenderPipeline" }
-
+        Cull Off
         Pass
         {
             // The HLSL code block. Unity SRP uses the HLSL language.
@@ -86,5 +86,6 @@ Shader "ARTEMIS/DHA"
             }
             ENDHLSL
         }
+
     }
 }
