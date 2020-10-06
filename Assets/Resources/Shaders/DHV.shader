@@ -1,4 +1,4 @@
-// This shader fills the mesh shape with a color predefined in the code.
+﻿// This shader fills the mesh shape with a color predefined in the code.
 Shader "ARTEMIS/DHA"
 {
     // The properties block of the Unity shader. In this example this block is empty
@@ -31,7 +31,9 @@ Shader "ARTEMIS/DHA"
             // The Core.hlsl file contains definitions of frequently used HLSL
             // macros and functions, and also contains #include references to other
             // HLSL files (for example, Common.hlsl, SpaceTransforms.hlsl, etc.).
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"    
+            //#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"   
+            #include "UnityCG.cginc"
+
             float _dMax;
             float _hMax;
             float _hMin;
@@ -59,12 +61,13 @@ Shader "ARTEMIS/DHA"
             Varyings vert(Attributes IN) {
                 // Declaring the output object (OUT) with the Varyings struct.
                 Varyings OUT;
-                // The TransformObjectToHClip function transforms vertex positions
+                // The UnityObjectToClipPos function transforms vertex positions
                 // from object space to homogenous space
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
+                OUT.positionHCS = UnityObjectToClipPos(IN.positionOS.xyz);
                 //OUT.relativePos.xyz = IN.positionOS.xyz - _WorldSpaceCameraPos;
                 //float4 worldPos = mul(unity_ObjectToWorld)
-                OUT.relativePos = mul(UNITY_MATRIX_MV, float4(IN.positionOS.xyz,1));
+                OUT.relativePos.xyz = UnityObjectToViewPos(IN.positionOS.xyz);
+                //OUT.relativePos = mul(UNITY_MATRIX_MV, float4(IN.positionOS.xyz,1));
 
                 // Returning the output.
                 return OUT;
