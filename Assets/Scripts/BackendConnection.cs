@@ -16,6 +16,7 @@ using System.Collections.Generic;
 public class BackendConnection : MonoBehaviour
 {
     public string commands_csv_location = "commands";
+    public string mission_name = "paper200610";
 
     [Tooltip("Round-trip Transmission Signal Delay [s]")]
     public short _transmissionDelay = 8;
@@ -89,7 +90,7 @@ public class BackendConnection : MonoBehaviour
 
         string appl = "./iris-artemis-backend-compiled";
 
-        backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
+        backend_python_proc = ExecuteShell(appl + " -m "+ mission_name+" -p RedRover");
     }
 
     // Executes the given shell command. Returns the created process.
@@ -132,6 +133,7 @@ public class BackendConnection : MonoBehaviour
     // Closes Out Database Connection
     private void Close()
     {
+        // TODO: Tell it to close over ZMQ.
         if (backend_python_proc != null && !backend_python_proc.HasExited)
         {
             backend_python_proc.Kill();

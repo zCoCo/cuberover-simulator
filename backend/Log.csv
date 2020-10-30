@@ -11,3 +11,277 @@ time, entries
 06/14/2020 @ 01:27:25.490: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
 06/14/2020 @ 01:27:25.493: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
 06/14/2020 @ 01:27:25.495: ,New Command: ,7,ARTEMIS_Undeploy,0,0,0,0
+09/21/2020 @ 13:45:24.162: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+09/21/2020 @ 14:25:51.171: ,NEW IMAGE DETECTED.
+09/21/2020 @ 21:18:50.232: ,NEW IMAGE DETECTED.
+09/21/2020 @ 21:25:36.265: ,NEW IMAGE DETECTED.
+09/21/2020 @ 21:25:39.142: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Front-0-1600737935843.jpg ####
+09/21/2020 @ 21:25:40.235: ,NEW IMAGE DETECTED.
+09/21/2020 @ 21:25:41.573: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Rear-0-1600737936593.jpg ####
+09/21/2020 @ 21:25:42.623: ,NEW IMAGE DETECTED.
+09/21/2020 @ 21:25:43.667: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Front-0-1600737941442.jpg ####
+09/21/2020 @ 21:25:44.848: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Rear-0-1600737942048.jpg ####
+09/21/2020 @ 21:25:45.990: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Front-0-1600737940125.jpg ####
+09/21/2020 @ 21:25:47.214: ,#### Uploaded 0-ARTEMIS_CorrectiveManeuver-Rear-0-1600737940807.jpg ####
+10/01/2020 @ 19:40:52.669: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:41:01.136: ,paper200610,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:41:20.542: ,paper201002,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:45:38.161: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:45:38.663: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:45:38.891: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:45:38.946: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:45:40.659: ,#### Uploaded 0-LandingSite-Rear-0-1601595938444.jpg ####
+10/01/2020 @ 19:45:41.346: ,#### Uploaded 0-LandingSite-Rear-0-1601595938444.jpg ####
+10/01/2020 @ 19:45:42.737: ,#### Uploaded 0-LandingSite-Rear-0-1601595938444.jpg ####
+10/01/2020 @ 19:45:43.423: ,#### Uploaded 0-LandingSite-Front-0-1601595938151.jpg ####
+10/01/2020 @ 19:45:44.728: ,#### Uploaded 0-LandingSite-Front-0-1601595938151.jpg ####
+10/01/2020 @ 19:45:45.512: ,#### Uploaded 0-LandingSite-Front-0-1601595938151.jpg ####
+10/01/2020 @ 19:48:48.045: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:48:53.014: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:48:55.376: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:49:21.794: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:49:32.622: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:50:08.866: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:50:15.759: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:50:18.277: ,#### Uploaded 0-LandingSite-Front-0-1601596215361.jpg ####
+10/01/2020 @ 19:50:19.338: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:50:20.179: ,#### Uploaded 0-LandingSite-Rear-0-1601596216182.jpg ####
+10/01/2020 @ 19:57:46.766: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 19:57:55.517: ,New Command: ,1,TakeScienceImage,0,0,0,0
+10/01/2020 @ 19:57:58.845: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:58:00.757: ,#### Uploaded 1-TakeScienceImage-Front-0-1601596678460.jpg ####
+10/01/2020 @ 19:58:01.808: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:58:02.660: ,#### Uploaded 1-TakeScienceImage-Rear-0-1601596678802.jpg ####
+10/01/2020 @ 19:58:52.565: ,New Command: ,2,ARTEMIS_Deploy,0,0,0,0
+10/01/2020 @ 19:59:01.217: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:59:02.119: ,#### Uploaded 2-ARTEMIS_Deploy-Front-0-1601596740810.jpg ####
+10/01/2020 @ 19:59:03.176: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:59:03.988: ,#### Uploaded 2-ARTEMIS_Deploy-Rear-0-1601596742017.jpg ####
+10/01/2020 @ 19:59:16.438: ,New Command: ,3,MoveForward,100,10,0,1
+10/01/2020 @ 19:59:29.742: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:59:30.741: ,#### Uploaded 3-MoveForward-Rear-0-1601596769381.jpg ####
+10/01/2020 @ 19:59:31.853: ,#### Uploaded 3-MoveForward-Front-0-1601596768774.jpg ####
+10/01/2020 @ 19:59:43.335: ,New Command: ,4,TurnLeft,90,15,1,-1
+10/01/2020 @ 19:59:52.436: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:59:53.252: ,#### Uploaded 4-TurnLeft-Front-0-1601596792173.jpg ####
+10/01/2020 @ 19:59:54.282: ,NEW IMAGE DETECTED.
+10/01/2020 @ 19:59:55.144: ,#### Uploaded 4-TurnLeft-Rear-0-1601596793013.jpg ####
+10/01/2020 @ 20:05:47.192: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:05:47.802: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:05:49.021: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:05:56.529: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:11:15.504: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:15:54.221: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:16:17.101: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/01/2020 @ 20:17:59.622: ,paper201001,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/02/2020 @ 13:20:29.370: ,paper20100202,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/02/2020 @ 13:20:32.144: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:20:33.518: ,#### Uploaded 0-LandingSite-Rear-0-1601659231958.jpg ####
+10/02/2020 @ 13:20:34.990: ,#### Uploaded 0-LandingSite-Front-0-1601659231640.jpg ####
+10/02/2020 @ 13:23:53.131: ,New Command: ,1,ARTEMIS_Deploy,0,0,0,0
+10/02/2020 @ 13:24:01.194: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:24:02.085: ,#### Uploaded 1-ARTEMIS_Deploy-Front-0-1601659440196.jpg ####
+10/02/2020 @ 13:24:02.874: ,#### Uploaded 1-ARTEMIS_Deploy-Rear-0-1601659440511.jpg ####
+10/02/2020 @ 13:29:03.651: ,New Command: ,2,MoveForward,30,5,0,1
+10/02/2020 @ 13:29:40.884: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:29:41.736: ,#### Uploaded 2-MoveForward-Front-0-1601659780171.jpg ####
+10/02/2020 @ 13:29:42.803: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:29:43.623: ,#### Uploaded 2-MoveForward-Rear-0-1601659780758.jpg ####
+10/02/2020 @ 13:30:18.497: ,New Command: ,3,MoveForward,60,5,0,1
+10/02/2020 @ 13:30:40.336: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:30:41.222: ,#### Uploaded 3-MoveForward-Front-0-1601659839499.jpg ####
+10/02/2020 @ 13:30:42.167: ,#### Uploaded 3-MoveForward-Rear-0-1601659840053.jpg ####
+10/02/2020 @ 13:35:53.493: ,New Command: ,4,MoveForward,30,5,0,1
+10/02/2020 @ 13:43:35.655: ,New Command: ,5,MoveForward,30,5,0,1
+10/02/2020 @ 13:44:51.036: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:44:51.896: ,#### Uploaded 4-MoveForward-Front-0-1601660690615.jpg ####
+10/02/2020 @ 13:44:52.954: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:44:54.311: ,#### Uploaded 4-MoveForward-Rear-0-1601660691463.jpg ####
+10/02/2020 @ 13:44:59.483: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:45:00.540: ,#### Uploaded 5-MoveForward-Rear-0-1601660699150.jpg ####
+10/02/2020 @ 13:45:01.403: ,#### Uploaded 5-MoveForward-Front-0-1601660698354.jpg ####
+10/02/2020 @ 13:48:39.282: ,New Command: ,6,TurnRight,30,5,1,1
+10/02/2020 @ 13:49:02.388: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:49:03.363: ,#### Uploaded 6-TurnRight-Rear-0-1601660941974.jpg ####
+10/02/2020 @ 13:49:04.193: ,#### Uploaded 6-TurnRight-Front-0-1601660941443.jpg ####
+10/02/2020 @ 13:51:27.572: ,New Command: ,7,MoveForward,30,5,0,1
+10/02/2020 @ 13:51:37.793: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:51:38.604: ,#### Uploaded 7-MoveForward-Front-0-1601661097329.jpg ####
+10/02/2020 @ 13:51:39.681: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:51:40.664: ,#### Uploaded 7-MoveForward-Rear-0-1601661097877.jpg ####
+10/02/2020 @ 13:52:25.480: ,New Command: ,8,MoveForward,30,5,0,1
+10/02/2020 @ 13:52:49.731: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:52:50.544: ,#### Uploaded 8-MoveForward-Front-0-1601661168685.jpg ####
+10/02/2020 @ 13:52:51.484: ,#### Uploaded 8-MoveForward-Rear-0-1601661169418.jpg ####
+10/02/2020 @ 13:55:03.548: ,New Command: ,9,MoveForward,30,5,0,1
+10/02/2020 @ 13:55:28.323: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:55:29.218: ,#### Uploaded 9-MoveForward-Front-0-1601661327567.jpg ####
+10/02/2020 @ 13:55:30.292: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:55:31.295: ,#### Uploaded 9-MoveForward-Rear-0-1601661328140.jpg ####
+10/02/2020 @ 13:56:21.433: ,New Command: ,10,TakeScienceImage,0,0,0,0
+10/02/2020 @ 13:57:17.528: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:57:18.369: ,#### Uploaded 10-TakeScienceImage-Front-0-1601661437207.jpg ####
+10/02/2020 @ 13:57:19.438: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:57:20.451: ,#### Uploaded 10-TakeScienceImage-Rear-0-1601661437754.jpg ####
+10/02/2020 @ 13:58:52.694: ,New Command: ,11,MoveBackward,15,5,0,-1
+10/02/2020 @ 13:59:01.480: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:59:02.315: ,#### Uploaded 11-MoveBackward-Front-0-1601661541146.jpg ####
+10/02/2020 @ 13:59:03.408: ,NEW IMAGE DETECTED.
+10/02/2020 @ 13:59:04.369: ,#### Uploaded 11-MoveBackward-Rear-0-1601661541751.jpg ####
+10/02/2020 @ 14:00:56.812: ,New Command: ,12,TurnRight,30,5,1,1
+10/02/2020 @ 14:01:36.053: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:01:36.944: ,#### Uploaded 12-TurnRight-Rear-0-1601661695405.jpg ####
+10/02/2020 @ 14:01:37.786: ,#### Uploaded 12-TurnRight-Front-0-1601661694862.jpg ####
+10/02/2020 @ 14:02:26.670: ,New Command: ,13,TurnRight,30,5,1,1
+10/02/2020 @ 14:02:46.974: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:02:47.770: ,#### Uploaded 13-TurnRight-Front-0-1601661766421.jpg ####
+10/02/2020 @ 14:02:48.836: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:02:49.684: ,#### Uploaded 13-TurnRight-Rear-0-1601661767061.jpg ####
+10/02/2020 @ 14:05:27.054: ,New Command: ,14,MoveForward,30,5,0,1
+10/02/2020 @ 14:05:35.722: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:05:36.499: ,#### Uploaded 14-MoveForward-Front-0-1601661935013.jpg ####
+10/02/2020 @ 14:05:37.559: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:05:38.412: ,#### Uploaded 14-MoveForward-Rear-0-1601661935669.jpg ####
+10/02/2020 @ 14:06:26.110: ,New Command: ,15,MoveForward,30,5,0,1
+10/02/2020 @ 14:06:35.110: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:06:35.847: ,#### Uploaded 15-MoveForward-Front-0-1601661993893.jpg ####
+10/02/2020 @ 14:06:36.662: ,#### Uploaded 15-MoveForward-Rear-0-1601661994567.jpg ####
+10/02/2020 @ 14:07:56.651: ,New Command: ,16,TurnRight,15,5,1,1
+10/02/2020 @ 14:08:05.344: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:08:06.176: ,#### Uploaded 16-TurnRight-Rear-0-1601662085026.jpg ####
+10/02/2020 @ 14:08:07.023: ,#### Uploaded 16-TurnRight-Front-0-1601662084382.jpg ####
+10/02/2020 @ 14:09:16.798: ,New Command: ,17,TakeScienceImage,0,0,0,0
+10/02/2020 @ 14:09:20.314: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:09:21.120: ,#### Uploaded 17-TakeScienceImage-Front-0-1601662159680.jpg ####
+10/02/2020 @ 14:09:22.172: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:09:22.992: ,#### Uploaded 17-TakeScienceImage-Rear-0-1601662160283.jpg ####
+10/02/2020 @ 14:10:43.940: ,New Command: ,18,MoveForward,30,5,0,1
+10/02/2020 @ 14:11:53.685: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:11:54.515: ,#### Uploaded 18-MoveForward-Front-0-1601662312858.jpg ####
+10/02/2020 @ 14:11:55.573: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:11:56.414: ,#### Uploaded 18-MoveForward-Rear-0-1601662313450.jpg ####
+10/02/2020 @ 14:12:29.921: ,New Command: ,19,MoveForward,30,5,0,1
+10/02/2020 @ 14:13:01.441: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:13:02.234: ,#### Uploaded 19-MoveForward-Front-0-1601662380990.jpg ####
+10/02/2020 @ 14:13:03.298: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:13:04.216: ,#### Uploaded 19-MoveForward-Rear-0-1601662381681.jpg ####
+10/02/2020 @ 14:13:49.891: ,New Command: ,20,MoveForward,15,5,0,1
+10/02/2020 @ 14:14:00.010: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:14:00.804: ,#### Uploaded 20-MoveForward-Front-0-1601662439021.jpg ####
+10/02/2020 @ 14:14:01.643: ,#### Uploaded 20-MoveForward-Rear-0-1601662439643.jpg ####
+10/02/2020 @ 14:14:26.914: ,New Command: ,21,TakeScienceImage,0,0,0,0
+10/02/2020 @ 14:16:14.830: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:16:15.603: ,#### Uploaded 21-TakeScienceImage-Front-0-1601662574301.jpg ####
+10/02/2020 @ 14:16:16.666: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:16:17.485: ,#### Uploaded 21-TakeScienceImage-Rear-0-1601662574910.jpg ####
+10/02/2020 @ 14:17:01.148: ,New Command: ,22,TurnRight,30,5,1,1
+10/02/2020 @ 14:17:12.184: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:17:13.083: ,#### Uploaded 22-TurnRight-Front-0-1601662631368.jpg ####
+10/02/2020 @ 14:17:14.133: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:17:14.972: ,#### Uploaded 22-TurnRight-Rear-0-1601662631980.jpg ####
+10/02/2020 @ 14:17:50.462: ,New Command: ,23,TurnRight,10,5,1,1
+10/02/2020 @ 14:18:04.529: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:18:05.549: ,#### Uploaded 23-TurnRight-Front-0-1601662683645.jpg ####
+10/02/2020 @ 14:18:06.613: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:18:07.437: ,#### Uploaded 23-TurnRight-Rear-0-1601662684324.jpg ####
+10/02/2020 @ 14:19:38.918: ,New Command: ,24,TurnRight,15,5,1,1
+10/02/2020 @ 14:19:56.940: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:19:57.919: ,#### Uploaded 24-TurnRight-Front-0-1601662795797.jpg ####
+10/02/2020 @ 14:19:58.737: ,#### Uploaded 24-TurnRight-Rear-0-1601662796462.jpg ####
+10/02/2020 @ 14:22:04.181: ,New Command: ,25,TurnRight,10,5,1,1
+10/02/2020 @ 14:22:26.317: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:22:27.285: ,#### Uploaded 25-TurnRight-Front-0-1601662945973.jpg ####
+10/02/2020 @ 14:22:28.348: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:22:29.136: ,#### Uploaded 25-TurnRight-Rear-0-1601662946691.jpg ####
+10/02/2020 @ 14:22:59.715: ,New Command: ,26,MoveForward,30,5,0,1
+10/02/2020 @ 14:23:10.479: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:23:11.447: ,#### Uploaded 26-MoveForward-Front-0-1601662990129.jpg ####
+10/02/2020 @ 14:23:12.508: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:23:13.322: ,#### Uploaded 26-MoveForward-Rear-0-1601662990855.jpg ####
+10/02/2020 @ 14:24:16.369: ,New Command: ,27,TurnLeft,60,5,1,-1
+10/02/2020 @ 14:24:33.889: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:24:34.698: ,#### Uploaded 27-TurnLeft-Front-0-1601663073431.jpg ####
+10/02/2020 @ 14:24:35.756: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:24:36.606: ,#### Uploaded 27-TurnLeft-Rear-0-1601663074175.jpg ####
+10/02/2020 @ 14:25:04.005: ,New Command: ,28,TurnLeft,30,5,1,-1
+10/02/2020 @ 14:25:20.005: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:25:20.768: ,#### Uploaded 28-TurnLeft-Front-0-1601663119054.jpg ####
+10/02/2020 @ 14:25:21.829: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:25:22.683: ,#### Uploaded 28-TurnLeft-Rear-0-1601663119827.jpg ####
+10/02/2020 @ 14:25:36.198: ,New Command: ,29,TakeScienceImage,0,0,0,0
+10/02/2020 @ 14:25:40.233: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:25:41.005: ,#### Uploaded 29-TakeScienceImage-Front-0-1601663139543.jpg ####
+10/02/2020 @ 14:25:42.069: ,NEW IMAGE DETECTED.
+10/02/2020 @ 14:25:42.891: ,#### Uploaded 29-TakeScienceImage-Rear-0-1601663140246.jpg ####
+10/16/2020 @ 13:15:29.550: ,paper201016,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/16/2020 @ 13:16:31.143: ,paper201016,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/16/2020 @ 13:17:02.271: ,paper201016,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+10/16/2020 @ 13:17:02.723: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:17:05.190: ,#### Uploaded 0-LandingSite-Front-0-1602868621612.jpg ####
+10/16/2020 @ 13:17:06.038: ,#### Uploaded 0-LandingSite-Rear-0-1602868621882.jpg ####
+10/16/2020 @ 13:18:33.501: ,New Command: ,1,ARTEMIS_Deploy,0,0,0,0
+10/16/2020 @ 13:18:33.509: ,New Command: ,1,ARTEMIS_Deploy,0,0,0,0
+10/16/2020 @ 13:18:43.842: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:18:43.881: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:18:45.296: ,#### Uploaded 1-ARTEMIS_Deploy-Rear-0-1602868723344.jpg ####
+10/16/2020 @ 13:18:46.051: ,#### Uploaded 1-ARTEMIS_Deploy-Rear-0-1602868723344.jpg ####
+10/16/2020 @ 13:18:46.198: ,#### Uploaded 1-ARTEMIS_Deploy-Front-0-1602868722903.jpg ####
+10/16/2020 @ 13:18:47.106: ,#### Uploaded 1-ARTEMIS_Deploy-Front-0-1602868722903.jpg ####
+10/16/2020 @ 13:20:14.373: ,New Command: ,2,MoveForward,10,5,0,1
+10/16/2020 @ 13:20:21.013: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:20:21.885: ,#### Uploaded 2-MoveForward-Front-0-1602868820516.jpg ####
+10/16/2020 @ 13:20:22.923: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:20:23.696: ,#### Uploaded 2-MoveForward-Rear-0-1602868820926.jpg ####
+10/16/2020 @ 13:22:59.819: ,New Command: ,3,TurnRight,40,5,1,1
+10/16/2020 @ 13:23:26.109: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:23:26.892: ,#### Uploaded 3-TurnRight-Rear-0-1602869005713.jpg ####
+10/16/2020 @ 13:23:27.901: ,#### Uploaded 3-TurnRight-Front-0-1602869005289.jpg ####
+10/16/2020 @ 13:24:40.274: ,New Command: ,4,MoveForward,30,5,0,1
+10/16/2020 @ 13:25:09.872: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:25:10.662: ,#### Uploaded 4-MoveForward-Front-0-1602869109623.jpg ####
+10/16/2020 @ 13:25:11.735: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:25:12.560: ,#### Uploaded 4-MoveForward-Rear-0-1602869110102.jpg ####
+10/16/2020 @ 13:25:41.828: ,New Command: ,5,MoveForward,30,5,0,1
+10/16/2020 @ 13:26:08.289: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:26:09.073: ,#### Uploaded 5-MoveForward-Front-0-1602869167635.jpg ####
+10/16/2020 @ 13:26:09.902: ,#### Uploaded 5-MoveForward-Rear-0-1602869168044.jpg ####
+10/16/2020 @ 13:27:38.381: ,New Command: ,6,MoveForward,30,5,0,1
+10/16/2020 @ 13:28:10.439: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:28:11.216: ,#### Uploaded 6-MoveForward-Front-0-1602869289889.jpg ####
+10/16/2020 @ 13:28:12.284: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:28:13.121: ,#### Uploaded 6-MoveForward-Rear-0-1602869290372.jpg ####
+10/16/2020 @ 13:31:57.495: ,New Command: ,7,TurnRight,10,5,1,1
+10/16/2020 @ 13:32:28.853: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:32:29.620: ,#### Uploaded 7-TurnRight-Front-0-1602869547841.jpg ####
+10/16/2020 @ 13:32:30.439: ,#### Uploaded 7-TurnRight-Rear-0-1602869548337.jpg ####
+10/16/2020 @ 13:33:40.194: ,New Command: ,8,MoveForward,30,5,0,1
+10/16/2020 @ 13:33:49.808: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:33:50.604: ,#### Uploaded 8-MoveForward-Front-0-1602869628662.jpg ####
+10/16/2020 @ 13:33:51.438: ,#### Uploaded 8-MoveForward-Rear-0-1602869629187.jpg ####
+10/16/2020 @ 13:34:26.984: ,New Command: ,9,MoveForward,30,5,0,1
+10/16/2020 @ 13:34:51.310: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:34:52.133: ,#### Uploaded 9-MoveForward-Front-0-1602869691093.jpg ####
+10/16/2020 @ 13:34:53.196: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:34:54.128: ,#### Uploaded 9-MoveForward-Rear-0-1602869691573.jpg ####
+10/16/2020 @ 13:35:46.325: ,New Command: ,10,MoveForward,30,5,0,1
+10/16/2020 @ 13:36:43.443: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:36:44.198: ,#### Uploaded 10-MoveForward-Front-0-1602869803198.jpg ####
+10/16/2020 @ 13:36:45.242: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:36:46.138: ,#### Uploaded 10-MoveForward-Rear-0-1602869803687.jpg ####
+10/16/2020 @ 13:37:05.415: ,New Command: ,11,MoveForward,30,5,0,1
+10/16/2020 @ 13:38:00.549: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:38:01.283: ,#### Uploaded 11-MoveForward-Front-0-1602869880113.jpg ####
+10/16/2020 @ 13:38:02.348: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:38:03.230: ,#### Uploaded 11-MoveForward-Rear-0-1602869880608.jpg ####
+10/16/2020 @ 13:39:06.248: ,New Command: ,12,MoveForward,15,5,0,1
+10/16/2020 @ 13:39:50.530: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:39:51.423: ,#### Uploaded 12-MoveForward-Rear-0-1602869990268.jpg ####
+10/16/2020 @ 13:39:52.158: ,#### Uploaded 12-MoveForward-Front-0-1602869989808.jpg ####
+10/16/2020 @ 13:43:50.518: ,New Command: ,13,MoveBackward,15,1,0,-1
+10/16/2020 @ 13:45:00.419: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:45:01.329: ,#### Uploaded 13-MoveBackward-Rear-0-1602870300110.jpg ####
+10/16/2020 @ 13:45:02.049: ,#### Uploaded 13-MoveBackward-Front-0-1602870299728.jpg ####
+10/16/2020 @ 13:52:31.927: ,New Command: ,14,TakeScienceImage,0,0,0,0
+10/16/2020 @ 13:52:38.254: ,NEW IMAGE DETECTED.
+10/16/2020 @ 13:52:39.000: ,#### Uploaded 14-TakeScienceImage-Front-0-1602870757514.jpg ####
+10/16/2020 @ 13:52:39.872: ,#### Uploaded 14-TakeScienceImage-Rear-0-1602870757875.jpg ####
