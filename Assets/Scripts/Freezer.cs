@@ -24,6 +24,8 @@ public class Freezer : MonoBehaviour
         }
         else if (!freeze && prev_freeze)
         {
+            rb.velocity = Vector3.zero; // Ensure proper initial conditions
+            rb.angularVelocity = Vector3.zero;
             rb.constraints = RigidbodyConstraints.None;
         }
         prev_freeze = freeze;

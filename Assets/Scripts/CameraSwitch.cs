@@ -26,6 +26,8 @@ public class CameraSwitch : MonoBehaviour
     public GameObject Lwheel_rear;
     public GameObject Rwheel_rear;
 
+    public bool hide_wheels_from_view = false;
+
     bool frontView = true;
     bool locked = false;
 
@@ -65,12 +67,16 @@ public class CameraSwitch : MonoBehaviour
     }
 
     void UpdateCameraView(){
-      frontCam.gameObject.SetActive(frontView);
-      rearCam.gameObject.SetActive(!frontView);
-      // Hide Wheels which would be in view:
-      Lwheel_front.SetActive(!frontView);
-      Rwheel_front.SetActive(!frontView);
-      Lwheel_rear.SetActive(frontView);
-      Rwheel_rear.SetActive(frontView);
+        frontCam.gameObject.SetActive(frontView);
+        rearCam.gameObject.SetActive(!frontView);
+        // Hide Wheels which would be in view:
+        if (hide_wheels_from_view)
+        {
+            Lwheel_front.SetActive(!frontView);
+            Rwheel_front.SetActive(!frontView);
+            Lwheel_rear.SetActive(frontView);
+            Rwheel_rear.SetActive(frontView);
+        }
+    
     }
 }

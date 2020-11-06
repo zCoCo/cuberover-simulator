@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public class TankMovement : MonoBehaviour
 {
     [Header("Mechanical Properties")]
-    [Tooltip("Used for odometry.")]
+    [Tooltip("Used for forward odometry.")]
     public GameObject wheel_sample;
     [Tooltip("Functional Radius of Wheel [cm] (if null, uses bounding box of wheel)")]
     public float? wheel_radius;
@@ -26,6 +26,14 @@ public class TankMovement : MonoBehaviour
     public float lateral_deviation_factor;
     [Tooltip("Standard Deviation [deg] when attempting a turn (achieved angle distribution with commanded angle as mean)")]
     public float turning_std;
+
+    [Header("Animation")]
+    [Tooltip("Used for animating wheels while driving.")]
+    public MonoBehaviour sensors;
+    public GameObject Lwheel_front;
+    public GameObject Rwheel_front;
+    public GameObject Lwheel_rear;
+    public GameObject Rwheel_rear;
 
     [HideInInspector]
     public bool was_moving = true;
@@ -171,12 +179,24 @@ public class TankMovement : MonoBehaviour
         }
     }
 
+    // Toggle Deployment State (for repeated testing)
+    public void ToggleDeploy()
+    {
+        if (Deployed)
+        {
+            UnDeploy();
+        } else
+        {
+            Deploy();
+        }
+    }
+
     private void Start()
     {
         if(wheel_radius == null)
         {
             Vector3 wheel_bounds = wheel_sample.GetComponent<Renderer>().bounds.size;
-            wheel_radius = Mathf.Max(wheel_bounds.x, wheel_bounds.y, wheel_bounds.z)/2 * 10; // *10 to convert mm->cm
+            wheel_radius = 0.75f * Mathf.Max(wheel_bounds.x, wheel_bounds.y, wheel_bounds.z)/2 * 10; // *10 to convert mm->cm
         }
     }
 
@@ -184,6 +204,12 @@ public class TankMovement : MonoBehaviour
         // Stores the value of both input axes.
         m_MovementStickValue = Input.GetAxis(m_MovementAxisName);
         m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
+
+        // Deploy by Key:
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ToggleDeploy();
+        }
     }
 
     private void FixedUpdate(){
@@ -202,13 +228,20 @@ public class TankMovement : MonoBehaviour
           was_moving = false;
           m_Speed = 50;
           backend.CURR_NAME = "ARTEMIS_CorrectiveManeuver"; 
-          Move(m_MovementStickValue); // div by 3 semi-arbitrarily for better control authority
-          Turn(m_TurnStickValue);
+          Move(m_MovementStickValue/3.0f); // div by 3 semi-arbitrarily for better control authority
+          Turn(m_TurnStickValue/3.0f);
         } else if(!was_moving){
           was_moving = true;
           recorder.SCREEN_CAP = true; // trigger screen capture
         }
-    }
+
+        // Animate Wheels:
+        float wheel_scaling_factor = 2 * sensors.GetComponent<Odometer>().R / wheel_radius.Value / 10.0f;
+        Lwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_l1 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Lwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_l2 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Rwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_r1 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Rwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_r2 * Time.fixedDeltaTime, 0.0f, 0.0f);
+}
 
     // Perform linear movement update. Forward if direction>0, backwards if <0. direction can take values besides (1,0,-1) for WASD override control.
     private void Move(float direction){

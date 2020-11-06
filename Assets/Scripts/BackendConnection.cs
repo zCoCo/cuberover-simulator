@@ -89,7 +89,7 @@ public class BackendConnection : MonoBehaviour
 
         string appl = "python3 backend.py"; //./iris-artemis-backend-compiled
 
-        backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
+        backend_python_proc = ExecuteShell(appl + " -m paper201030 -p RedRover");
     }
 
     // Executes the given shell command. Returns the created process.
