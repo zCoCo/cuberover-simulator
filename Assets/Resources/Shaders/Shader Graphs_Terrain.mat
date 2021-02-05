@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Terrain
+  m_Shader: {fileID: -6465566751694194690, guid: 8d50035d79ad8b74e9d521b242759528,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2DLOD_08dc93f9d7a74babab4ec4f658a2c3e6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: f107ecfb17b17774b8236be944442a0b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_429adeb902ce402eb308fcaacf659fb7_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d3168f5db6bdb88478a03f13fbecaa66, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cf0acd4480144570a8909acb20561ac8_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 59a8adff6d1a7ba429167bd3238a5afc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1515c259ae6f46cbabe6454cb6cd4c30: 0.02
+    m_Colors:
+    - Vector2_ad19dbc6938d4e81a6ad98b723e45874: {r: 2, g: 2, b: 0, a: 0}
+  m_BuildTextureStacks: []

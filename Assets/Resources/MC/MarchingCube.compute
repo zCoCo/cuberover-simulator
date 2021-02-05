@@ -1,0 +1,136 @@
+﻿#include "MCTables.compute"
+#include "Noise.compute"
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel MCMain
+
+
+
+struct Triangle {
+    float3 vertexA;
+    float3 vertexB;
+    float3 vertexC;
+    float3 normalA;
+    float3 normalB;
+    float3 normalC;
+};
+
+RWStructuredBuffer<float4> dataBuffer;
+float4 minCorner; //origin of the samplespace
+
+AppendStructuredBuffer<Triangle> trianglesBuffer;
+AppendStructuredBuffer<Triangle> PPTrianglesBuffer;
+
+float isolevel;
+uint dataSize;
+uint scale;
+uint localScale;
+
+
+float3 CalcNormal(float3 p)
+{
+    //https://iquilezles.org/www/articles/normalsSDF/normalsSDF.htm
+    const float eps = 0.0001;
+    const float2 h = float2(eps, 0);
+    return normalize(float3(GetNoiseData(p + h.xyy).w - GetNoiseData(p - h.xyy).w,
+                           GetNoiseData(p + h.yxy).w - GetNoiseData(p - h.yxy).w,
+                           GetNoiseData(p + h.yyx).w - GetNoiseData(p - h.yyx).w));
+}
+
+int CoordToIndex(uint x, uint y, uint z) {
+    return (x * dataSize * dataSize + y * dataSize + z) * scale;
+}
+
+float3 LerpVertex(float4 v1, float4 v2) {
+    float u = (isolevel - v1.w) / (v2.w - v1.w);
+    //(v1.xyz + v2.xyz)/2 
+    //if (u < 0.1)
+    //    u = 0;
+    //if (u > 0.9)
+    //    u = 1;
+    return v1.xyz + u*(v2.xyz - v1.xyz);
+}
+
+void March(uint3 id : SV_DispatchThreadID, RWStructuredBuffer<float4> data, AppendStructuredBuffer<Triangle> buffer)
+{
+    if (id.x >= dataSize / localScale || id.y >= dataSize / localScale || id.z >= dataSize / localScale)
+    {
+        return;
+    }
+   //A worker thread is in charge of a cube
+   //find corner vertices of this cube
+    float4 corners[8];
+
+    //corners[0] = data[CoordToIndex(id.x, id.y, id.z)];
+    //corners[1] = data[CoordToIndex(id.x, id.y, id.z + 1)];
+    //corners[2] = data[CoordToIndex(id.x + 1, id.y, id.z + 1)];
+    //corners[3] = data[CoordToIndex(id.x + 1, id.y, id.z)];
+    //corners[4] = data[CoordToIndex(id.x, id.y + 1, id.z)];
+    //corners[5] = data[CoordToIndex(id.x, id.y + 1, id.z + 1)];
+    //corners[6] = data[CoordToIndex(id.x + 1, id.y + 1, id.z + 1)];
+    //corners[7] = data[CoordToIndex(id.x + 1, id.y + 1, id.z)];
+    
+    corners[0] = GetNoiseData(float3(id.x, id.y, id.z) * (1 << scale) + minCorner.xyz);
+    corners[1] = GetNoiseData(float3(id.x, id.y, id.z + 1) * (1 << scale) + minCorner.xyz);
+    corners[2] = GetNoiseData(float3(id.x + 1, id.y, id.z + 1) * (1 << scale) + minCorner.xyz);
+    corners[3] = GetNoiseData(float3(id.x + 1, id.y, id.z) * (1 << scale) + minCorner.xyz);
+    corners[4] = GetNoiseData(float3(id.x, id.y + 1, id.z) * (1 << scale) + minCorner.xyz);
+    corners[5] = GetNoiseData(float3(id.x, id.y + 1, id.z + 1) * (1 << scale) + minCorner.xyz);
+    corners[6] = GetNoiseData(float3(id.x + 1, id.y + 1, id.z + 1) * (1 << scale) + minCorner.xyz);
+    corners[7] = GetNoiseData(float3(id.x + 1, id.y + 1, id.z) * (1 << scale) + minCorner.xyz);
+
+   //find cube index according to the corner values
+    uint cubeindex = 0;
+    if (corners[0].w < isolevel)
+        cubeindex |= 1;
+    if (corners[1].w < isolevel)
+        cubeindex |= 2;
+    if (corners[2].w < isolevel)
+        cubeindex |= 4;
+    if (corners[3].w < isolevel)
+        cubeindex |= 8;
+    if (corners[4].w < isolevel)
+        cubeindex |= 16;
+    if (corners[5].w < isolevel)
+        cubeindex |= 32;
+    if (corners[6].w < isolevel)
+        cubeindex |= 64;
+    if (corners[7].w < isolevel)
+        cubeindex |= 128;
+    uint edgeIndex = edges[cubeindex];
+
+   //interpolate vertices
+    float3 vertices[12];
+
+    for (uint i = 0; i < 12; i++)
+    {
+        if ((edgeIndex & (1 << i)) != 0)
+        {
+            vertices[i] = LerpVertex(corners[cornerIndexAFromEdge[i]], corners[cornerIndexBFromEdge[i]]);
+        }
+    }
+
+   //triangulate
+
+    for (uint j = 0; triangulation[cubeindex][j] != -1; j += 3)
+    {
+        Triangle trig;
+        trig.vertexA = vertices[triangulation[cubeindex][j]];
+        trig.vertexB = vertices[triangulation[cubeindex][j + 1]];
+        trig.vertexC = vertices[triangulation[cubeindex][j + 2]];
+        trig.normalA = CalcNormal(trig.vertexA);
+        trig.normalB = CalcNormal(trig.vertexB);
+        trig.normalC = CalcNormal(trig.vertexC);
+        buffer.Append(trig);
+    }
+}
+
+[numthreads(8,8,8)]
+void MCMain (uint3 id : SV_DispatchThreadID)
+{
+    localScale = 1;
+    March(id, dataBuffer, trianglesBuffer);
+    scale += 1;
+    localScale += 1;
+    March(id, dataBuffer, PPTrianglesBuffer);
+}
+
