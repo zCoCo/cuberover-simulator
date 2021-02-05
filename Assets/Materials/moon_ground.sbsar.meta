@@ -17,7 +17,7 @@ ScriptedImporter:
     generateAllOutputs: 1
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://moon_ground\" label=\"\" >\n  <presetinput
-      identifier=\"$outputsize\" uid=\"2496982273\" type=\"8\" value=\"11,11\" />\n
+      identifier=\"$outputsize\" uid=\"2496982273\" type=\"8\" value=\"12,12\" />\n
       </sbspreset>\n"
     shaderName: Universal Render Pipeline/Lit
     materialProperties:
@@ -229,8 +229,8 @@ ScriptedImporter:
     - label: Default
       bOverride: 0
       bLockRatio: 1
-      textureWidth: 2048
-      textureHeight: 2048
+      textureWidth: 4096
+      textureHeight: 4096
       textureFormatMode: 0
       normalCompressed: 0
       bGenerateOnLoad: 1

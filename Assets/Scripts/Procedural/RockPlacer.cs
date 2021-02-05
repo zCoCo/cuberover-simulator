@@ -13,7 +13,7 @@ public class RockPlacer : MonoBehaviour
 
     void Start()
     {
-        PlaceRocks();
+        //PlaceRocks();
     }
 
 

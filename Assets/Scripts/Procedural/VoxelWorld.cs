@@ -32,6 +32,7 @@ namespace Voxel {
 
         public bool gizmos = false;
         public Material material;
+        public PhysicMaterial pysicMaterial;
         public Transform player;
 
         public Plane[] frustumPlanes;
