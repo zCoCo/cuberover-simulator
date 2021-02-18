@@ -202,8 +202,8 @@ public class TankMovement : MonoBehaviour
 
     private void Update(){
         // Stores the value of both input axes.
-        m_MovementStickValue = Input.GetAxis(m_MovementAxisName);
-        m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
+        m_MovementStickValue = 0; //Input.GetAxis(m_MovementAxisName);
+        m_TurnStickValue = 0; //Input.GetAxis(m_TurnAxisName);
 
         // Deploy by Key:
         if(Input.GetKeyDown(KeyCode.Space))
@@ -227,7 +227,7 @@ public class TankMovement : MonoBehaviour
           // override movement is being overridden with WASD stick control
           was_moving = false;
           m_Speed = 50;
-          backend.CURR_NAME = "ARTEMIS_CorrectiveManeuver"; 
+          backend.CURR_NAME = "ARTEMIS_CorrectiveManeuver";
           Move(m_MovementStickValue/3.0f); // div by 3 semi-arbitrarily for better control authority
           Turn(m_TurnStickValue/3.0f);
         } else if(!was_moving){
@@ -236,11 +236,11 @@ public class TankMovement : MonoBehaviour
         }
 
         // Animate Wheels:
-        float wheel_scaling_factor = 2 * sensors.GetComponent<Odometer>().R / wheel_radius.Value / 10.0f;
-        Lwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_l1 * Time.fixedDeltaTime, 0.0f, 0.0f);
-        Lwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_l2 * Time.fixedDeltaTime, 0.0f, 0.0f);
-        Rwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_r1 * Time.fixedDeltaTime, 0.0f, 0.0f);
-        Rwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor * sensors.GetComponent<Odometer>().w_r2 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        float wheel_scaling_factor = 2 * 0;//sensors.GetComponent<Odometer>().R / wheel_radius.Value / 10.0f;
+        Lwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor *0.0f, 0.0f, 0.0f);// sensors.GetComponent<Odometer>().w_l1 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Lwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor *0.0f, 0.0f, 0.0f);// sensors.GetComponent<Odometer>().w_l2 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Rwheel_front.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor *0.0f, 0.0f, 0.0f);// sensors.GetComponent<Odometer>().w_r1 * Time.fixedDeltaTime, 0.0f, 0.0f);
+        Rwheel_rear.transform.localRotation *= Quaternion.Euler(wheel_scaling_factor *0.0f, 0.0f, 0.0f);// sensors.GetComponent<Odometer>().w_r2 * Time.fixedDeltaTime, 0.0f, 0.0f);
 }
 
     // Perform linear movement update. Forward if direction>0, backwards if <0. direction can take values besides (1,0,-1) for WASD override control.
@@ -300,7 +300,7 @@ public class TankMovement : MonoBehaviour
         {
             rPw = m_Rigidbody.position;
         }
-        
+
         return new Vector4(rPw.x*mm, rPw.y*mm, rPw.z*mm, Mathf.Atan2(Mathf.Sin(m_Rigidbody.rotation.eulerAngles.y*deg), Mathf.Cos(m_Rigidbody.rotation.eulerAngles.y*deg))/deg);
     }
 }
