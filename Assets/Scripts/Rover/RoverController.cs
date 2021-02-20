@@ -57,7 +57,7 @@ public class RoverController : MonoBehaviour
         }
         wheels.Clear();
         Vector3 wheelsOrigin = new Vector3(0, 0, -1);
-        Vector3 wheelOffset = new Vector3(110, -30, 131);
+        Vector3 wheelOffset = new Vector3(110, -55, 131);
         string[] wheelNames = { "FL", "RL", "FR", "RR" };
         foreach( string name in wheelNames) {
             GameObject wheel = Instantiate(wheelPrefab, wheelsGO.transform);

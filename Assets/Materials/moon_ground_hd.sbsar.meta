@@ -43,8 +43,7 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MainTex
-        texture: {fileID: 3913465294025684011, guid: c20d52a1646aaf6449f14b535f605e51,
-          type: 3}
+        texture: {instanceID: 0}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MetallicGlossMap
@@ -237,4 +236,8 @@ ScriptedImporter:
       bGenerateOnLoad: 1
     material: {fileID: -7281086047228062584, guid: c20d52a1646aaf6449f14b535f605e51,
       type: 3}
-    generatedTextures: []
+    generatedTextures:
+    - {fileID: 3913465294025684011, guid: c20d52a1646aaf6449f14b535f605e51, type: 3}
+    - {fileID: -2058343562980550236, guid: c20d52a1646aaf6449f14b535f605e51, type: 3}
+    - {fileID: -4483423828543422661, guid: c20d52a1646aaf6449f14b535f605e51, type: 3}
+    - {fileID: 464406896728791476, guid: c20d52a1646aaf6449f14b535f605e51, type: 3}
