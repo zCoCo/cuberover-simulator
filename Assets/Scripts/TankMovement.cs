@@ -133,7 +133,8 @@ public class TankMovement : MonoBehaviour
             // Deploy:
             freezer.freeze = false; // Unfreeze (disable constraints)
             Deployed = true;
-            // Perform Post-Deployment Operations:
+            Debug.Log("DEPLOYED");
+            // Perform Post-Deployment Operations: 
             StartCoroutine(AfterDeploy());
         }
     }

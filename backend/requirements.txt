@@ -11,3 +11,6 @@ pip
 pymongo >= 3.8.0
 dnspython
 pyzmq
+Pillow
+numpy
+scipy
