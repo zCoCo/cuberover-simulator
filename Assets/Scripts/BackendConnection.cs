@@ -49,6 +49,8 @@ public class BackendConnection : MonoBehaviour
 
     private System.Diagnostics.Process backend_python_proc; // Backend python process
 
+    private bool _insp_connect_db_last = false;
+    public bool insp_connect_db = false;
     private bool _connect_to_db;
     public bool ConnectToDB {
         private get => _connect_to_db;
@@ -83,13 +85,15 @@ public class BackendConnection : MonoBehaviour
     // Setup Data Objects to Setup DB Connection
     private void Connect()
     {
+        Debug.Log("CONNECTING . . .");
         // Initialize Command History Length:
         List<Dictionary<string, object>> data = CSVReader.Read(commands_csv_location);
         last_commandHistory_length = data.Count + 1;
 
         string appl = "./iris-artemis-backend-compiled";
 
-        backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
+        // backend_python_proc = ExecuteShell(appl + " -m paper200610 -p RedRover");
+        Debug.Log("Connection Started.");
     }
 
     // Executes the given shell command. Returns the created process.
@@ -177,6 +181,13 @@ public class BackendConnection : MonoBehaviour
     {
         while (true)
         {
+            // Check if connection was changed in inspector:
+            if(insp_connect_db != _insp_connect_db_last)
+            {
+                _insp_connect_db_last = insp_connect_db;
+                ConnectToDB = insp_connect_db;
+            }
+
             // Update Comms:
             if (movement.was_moving && ConnectToDB)
             {

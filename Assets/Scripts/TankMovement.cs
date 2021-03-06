@@ -173,8 +173,8 @@ public class TankMovement : MonoBehaviour
 
     private void Update(){
         // Stores the value of both input axes.
-        m_MovementStickValue = Input.GetAxis(m_MovementAxisName);
-        m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
+        // m_MovementStickValue = Input.GetAxis(m_MovementAxisName);
+        // m_TurnStickValue = Input.GetAxis(m_TurnAxisName);
     }
 
     private void FixedUpdate(){

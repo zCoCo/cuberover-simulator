@@ -59,7 +59,7 @@ public class CameraRecorder : MonoBehaviour
     private TankMovement movement;
     private BackendConnection backend;
 
-    private bool export_images = false; // Whether to save (export) images
+    public bool export_images = false; // Whether to save (export) images
     // Set export images externally (from button)
     public void SetImageExport(bool export)
     {
@@ -105,8 +105,8 @@ public class CameraRecorder : MonoBehaviour
     void Update()
     {
         // check keyboard 'k' for one time screenshot capture and holding down 'v' for continious screenshots
-        captureScreenshot |= Input.GetKeyDown("k");
-        captureVideo = Input.GetKey("v");
+        // captureScreenshot |= Input.GetKeyDown("k");
+        // captureVideo = Input.GetKey("v");
 
         if (export_images && (captureScreenshot || captureVideo || SCREEN_CAP || !initLandingPhoto && !movement.Deployed && Time.realtimeSinceStartup > 1))
         {

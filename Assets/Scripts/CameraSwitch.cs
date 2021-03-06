@@ -21,10 +21,10 @@ public class CameraSwitch : MonoBehaviour
     public Camera frontCam;
     public Camera rearCam;
     public Camera depthCam;
-    public GameObject Lwheel_front;
-    public GameObject Rwheel_front;
-    public GameObject Lwheel_rear;
-    public GameObject Rwheel_rear;
+    //public GameObject Lwheel_front;
+    //public GameObject Rwheel_front;
+    //public GameObject Lwheel_rear;
+    //public GameObject Rwheel_rear;
 
     bool frontView = true;
     bool locked = false;
@@ -40,9 +40,9 @@ public class CameraSwitch : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        if (Input.GetKeyDown(characterInput.toggleCam)){
+        /*if (Input.GetKeyDown(characterInput.toggleCam)){
             ToggleCamera();
-        }
+        }*/
         if(CameraSwitch.USE_FRONT_CAM != frontView){ // allow for external manipulation
           frontView = CameraSwitch.USE_FRONT_CAM;
           UpdateCameraView();
@@ -68,9 +68,9 @@ public class CameraSwitch : MonoBehaviour
       frontCam.gameObject.SetActive(frontView);
       rearCam.gameObject.SetActive(!frontView);
       // Hide Wheels which would be in view:
-      Lwheel_front.SetActive(!frontView);
-      Rwheel_front.SetActive(!frontView);
-      Lwheel_rear.SetActive(frontView);
-      Rwheel_rear.SetActive(frontView);
+      //Lwheel_front.SetActive(!frontView);
+      //Rwheel_front.SetActive(!frontView);
+      //Lwheel_rear.SetActive(frontView);
+      //Rwheel_rear.SetActive(frontView);
     }
 }
