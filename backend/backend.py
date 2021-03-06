@@ -23,6 +23,9 @@ import pprint;
 from mongo_db_collection import MongoDbCollection
 import csv;
 
+from PIL import Image, ImageOps
+import numpy as np
+
 ### SETTINGS (defaults): ###
 MISSION = 'paper'
 PASS = ''
@@ -78,8 +81,8 @@ def nameToData(name):
     """
     data = dict();
     features = name.split('-');
-    if len(features) and len(features) == 5:
-        [commandLookupID,name,camera,lookupID,sendTime] = features;
+    if len(features) and len(features) >= 5:
+        [commandLookupID,name,camera,lookupID,sendTime,*extra] = features;
         data["name"] = name;
         data["camera"] = camera;
         data["lookupID"] = int(lookupID); # Gets overridden with count+1 when written to DB
@@ -105,13 +108,43 @@ def upload_data(f, addr):
         Log(["#### Uploaded %s ####" % addr])
         pp.pprint(data)
 
+def process_image(addr):
+    # Check if science image:
+    is_science = "science" in addr.lower()
+
+    # Load and convert:
+    img = Image.open(addr)
+    gray = ImageOps.grayscale(img)
+    w,h = gray.size
+
+    # Resize:
+    target_dims = np.asarray([2594, 1944]) if is_science else np.asarray([2594, 1944])/4
+    required_scaling = target_dims / np.asarray([w,h])
+    scale = np.max(required_scaling)
+    scaled = gray.resize((int(scale*w), int(scale*h)))
+    scaled_w, scaled_h = scaled.size
+
+    # Crop:
+    left = int((scaled_w-target_dims[0])/2)
+    top = int((scaled_h-target_dims[1])/2)
+    right = int(left + target_dims[0])
+    bottom = int(top + target_dims[1])
+    cropped = scaled.crop((left,top,right,bottom))
+
+    # Save:
+    path, ext = os.path.splitext(addr)
+    out_addr = path + "-missionmodified" + ext
+    quality = 100 if is_science else 20
+    cropped.save(out_addr, 'JPEG', dpi=[300,300], quality=quality)
+    return out_addr
 
 def upload_files(files):
     for address in files:
-        if address.endswith(('.jpeg', '.jpg')) and not address.startswith('.'):
-            with open(os.path.join(IMAGES_DIR, address), "rb") as im_file:
+        if address.endswith(('.jpeg', '.jpg')) and not address.startswith('.') and "-missionmodified" not in address:
+            uri = os.path.join(IMAGES_DIR, address)
+            out_uri = process_image(uri)
+            with open(out_uri, "rb") as im_file:
                 upload_data(im_file, address)
-
 
 # Upload all existing images:
 #upload_files(os.listdir(IMAGES_DIR))
