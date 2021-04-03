@@ -1706,3 +1706,219 @@ time, entries
 03/06/2021 @ 18:00:23.833: ,#### Uploaded 28-TakeScienceImage-Front-0-1615071618630.jpg ####
 03/06/2021 @ 18:00:28.700: ,#### Uploaded 28-TakeScienceImage-Rear-0-1615071618737.jpg ####
 03/06/2021 @ 18:00:29.847: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:24:20.759: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:25:09.827: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:25:12.159: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:26:31.976: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:27:04.586: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:29:37.813: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:29:46.723: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:30:47.630: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:30:49.331: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:30:50.382: ,#### Uploaded 0-HorizSquish-Front-0-0.jpg ####
+03/07/2021 @ 19:31:12.764: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:31:44.823: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:31:48.550: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:33:44.205: ,paper2021,RedRover],../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:33:48.089: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 19:33:52.770: ,NEW IMAGE DETECTED.
+03/07/2021 @ 19:33:53.846: ,#### Uploaded 0-VertSquish-Front-0-0.jpg ####
+03/07/2021 @ 20:47:35.134: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 20:47:43.002: ,NEW IMAGE DETECTED.
+03/07/2021 @ 20:47:45.098: ,#### Uploaded 0-ScienceHorizSquish-Front-0-0.jpg ####
+03/07/2021 @ 20:47:46.220: ,NEW IMAGE DETECTED.
+03/07/2021 @ 20:47:52.396: ,NEW IMAGE DETECTED.
+03/07/2021 @ 20:47:53.087: ,#### Uploaded 0-ScienceVertSquish-Front-0-0.jpg ####
+03/07/2021 @ 20:47:54.198: ,NEW IMAGE DETECTED.
+03/07/2021 @ 20:51:56.287: ,paper2021,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+03/07/2021 @ 20:52:09.402: ,NEW IMAGE DETECTED.
+03/07/2021 @ 20:52:11.174: ,#### Uploaded 0-ScienceWhiteout-Front-0-0.jpg ####
+03/07/2021 @ 20:52:12.281: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:10:42.187: ,paper20210403,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+04/03/2021 @ 17:19:04.960: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:22:50.584: ,paper20210403,RedRover,../Assets/Resources/commands.csv,../Assets/Resources/telemetry.csv,../
+04/03/2021 @ 17:23:28.370: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:23:30.281: ,#### Uploaded 0-LandingSite-Front-0-1617485007360.jpg ####
+04/03/2021 @ 17:23:30.835: ,#### Uploaded 0-LandingSite-Rear-0-1617485007477.jpg ####
+04/03/2021 @ 17:23:31.956: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:27:38.147: ,New Command: ,1,ARTEMIS_Deploy,0,0,0,0
+04/03/2021 @ 17:27:50.731: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:27:51.279: ,#### Uploaded 1-ARTEMIS_Deploy-Front-0-1617485270331.jpg ####
+04/03/2021 @ 17:27:51.899: ,#### Uploaded 1-ARTEMIS_Deploy-Rear-0-1617485270438.jpg ####
+04/03/2021 @ 17:27:53.016: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:29:54.415: ,New Command: ,2,MoveForward,30,5,0,1
+04/03/2021 @ 17:30:12.867: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:30:13.417: ,#### Uploaded 2-MoveForward-Front-0-1617485412158.jpg ####
+04/03/2021 @ 17:30:14.176: ,#### Uploaded 2-MoveForward-Rear-0-1617485412263.jpg ####
+04/03/2021 @ 17:30:15.299: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:32:31.035: ,New Command: ,3,MoveForward,30,5,0,1
+04/03/2021 @ 17:32:44.632: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:32:45.184: ,#### Uploaded 3-MoveForward-Front-0-1617485564253.jpg ####
+04/03/2021 @ 17:32:45.813: ,#### Uploaded 3-MoveForward-Rear-0-1617485564360.jpg ####
+04/03/2021 @ 17:32:46.929: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:33:22.302: ,New Command: ,4,TurnRight,30,5,1,1
+04/03/2021 @ 17:33:40.846: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:33:41.436: ,#### Uploaded 4-TurnRight-Front-0-1617485619842.jpg ####
+04/03/2021 @ 17:33:41.997: ,#### Uploaded 4-TurnRight-Rear-0-1617485619950.jpg ####
+04/03/2021 @ 17:33:43.123: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:35:59.309: ,New Command: ,5,MoveForward,30,5,0,1
+04/03/2021 @ 17:36:12.753: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:36:13.313: ,#### Uploaded 5-MoveForward-Front-0-1617485771787.jpg ####
+04/03/2021 @ 17:36:13.892: ,#### Uploaded 5-MoveForward-Rear-0-1617485771921.jpg ####
+04/03/2021 @ 17:36:15.013: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:37:07.744: ,New Command: ,6,MoveForward,30,5,0,1
+04/03/2021 @ 17:37:21.006: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:37:21.572: ,#### Uploaded 6-MoveForward-Front-0-1617485840816.jpg ####
+04/03/2021 @ 17:37:22.692: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:37:23.248: ,#### Uploaded 6-MoveForward-Rear-0-1617485840922.jpg ####
+04/03/2021 @ 17:37:24.395: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:37:49.454: ,New Command: ,7,MoveForward,30,5,0,1
+04/03/2021 @ 17:38:03.225: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:38:03.819: ,#### Uploaded 7-MoveForward-Front-0-1617485882409.jpg ####
+04/03/2021 @ 17:38:04.460: ,#### Uploaded 7-MoveForward-Rear-0-1617485882516.jpg ####
+04/03/2021 @ 17:38:05.606: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:38:50.287: ,New Command: ,8,MoveForward,30,5,0,1
+04/03/2021 @ 17:39:11.572: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:39:12.167: ,#### Uploaded 8-MoveForward-Front-0-1617485951466.jpg ####
+04/03/2021 @ 17:39:13.310: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:39:13.875: ,#### Uploaded 8-MoveForward-Rear-0-1617485951573.jpg ####
+04/03/2021 @ 17:39:15.041: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:39:53.391: ,New Command: ,9,TurnRight,30,5,1,1
+04/03/2021 @ 17:40:07.436: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:40:07.967: ,#### Uploaded 9-TurnRight-Front-0-1617486007006.jpg ####
+04/03/2021 @ 17:40:08.630: ,#### Uploaded 9-TurnRight-Rear-0-1617486007113.jpg ####
+04/03/2021 @ 17:40:09.756: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:40:36.842: ,New Command: ,10,TurnRight,20,5,1,1
+04/03/2021 @ 17:40:47.575: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:40:48.171: ,#### Uploaded 10-TurnRight-Front-0-1617486046607.jpg ####
+04/03/2021 @ 17:40:48.745: ,#### Uploaded 10-TurnRight-Rear-0-1617486046736.jpg ####
+04/03/2021 @ 17:40:49.901: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:41:11.585: ,New Command: ,11,MoveForward,30,5,0,1
+04/03/2021 @ 17:41:30.971: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:41:31.588: ,#### Uploaded 11-MoveForward-Front-0-1617486089805.jpg ####
+04/03/2021 @ 17:41:32.228: ,#### Uploaded 11-MoveForward-Rear-0-1617486089941.jpg ####
+04/03/2021 @ 17:41:33.359: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:41:43.463: ,New Command: ,12,MoveForward,30,5,0,1
+04/03/2021 @ 17:41:57.713: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:41:58.309: ,#### Uploaded 12-MoveForward-Front-0-1617486117494.jpg ####
+04/03/2021 @ 17:41:59.445: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:42:00.011: ,#### Uploaded 12-MoveForward-Rear-0-1617486117624.jpg ####
+04/03/2021 @ 17:42:01.161: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:42:50.930: ,New Command: ,13,MoveForward,30,5,0,1
+04/03/2021 @ 17:43:07.471: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:43:08.071: ,#### Uploaded 13-MoveForward-Front-0-1617486186842.jpg ####
+04/03/2021 @ 17:43:08.697: ,#### Uploaded 13-MoveForward-Rear-0-1617486186951.jpg ####
+04/03/2021 @ 17:43:09.833: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:43:30.837: ,New Command: ,14,MoveForward,30,5,0,1
+04/03/2021 @ 17:43:49.018: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:43:49.574: ,#### Uploaded 14-MoveForward-Front-0-1617486228429.jpg ####
+04/03/2021 @ 17:43:50.171: ,#### Uploaded 14-MoveForward-Rear-0-1617486228538.jpg ####
+04/03/2021 @ 17:43:51.318: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:44:05.147: ,New Command: ,15,MoveForward,30,5,0,1
+04/03/2021 @ 17:44:16.839: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:44:17.433: ,#### Uploaded 15-MoveForward-Front-0-1617486256079.jpg ####
+04/03/2021 @ 17:44:18.054: ,#### Uploaded 15-MoveForward-Rear-0-1617486256187.jpg ####
+04/03/2021 @ 17:44:19.192: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:44:31.701: ,New Command: ,16,MoveForward,30,5,0,1
+04/03/2021 @ 17:44:44.698: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:44:45.312: ,#### Uploaded 16-MoveForward-Front-0-1617486283723.jpg ####
+04/03/2021 @ 17:44:45.885: ,#### Uploaded 16-MoveForward-Rear-0-1617486283831.jpg ####
+04/03/2021 @ 17:44:47.000: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:45:05.146: ,New Command: ,17,TurnRight,10,5,1,1
+04/03/2021 @ 17:45:22.071: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:45:22.718: ,#### Uploaded 17-TurnRight-Front-0-1617486321248.jpg ####
+04/03/2021 @ 17:45:23.346: ,#### Uploaded 17-TurnRight-Rear-0-1617486321358.jpg ####
+04/03/2021 @ 17:45:24.470: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:45:37.919: ,New Command: ,18,MoveForward,30,5,0,1
+04/03/2021 @ 17:45:53.370: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:45:53.975: ,#### Uploaded 18-MoveForward-Front-0-1617486352602.jpg ####
+04/03/2021 @ 17:45:54.620: ,#### Uploaded 18-MoveForward-Rear-0-1617486352718.jpg ####
+04/03/2021 @ 17:45:55.782: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:46:44.120: ,New Command: ,19,MoveForward,30,5,0,1
+04/03/2021 @ 17:47:02.221: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:47:02.816: ,#### Uploaded 19-MoveForward-Front-0-1617486421969.jpg ####
+04/03/2021 @ 17:47:03.476: ,#### Uploaded 19-MoveForward-Rear-0-1617486422078.jpg ####
+04/03/2021 @ 17:47:04.632: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:47:18.124: ,New Command: ,20,MoveForward,30,5,0,1
+04/03/2021 @ 17:47:30.251: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:47:30.888: ,#### Uploaded 20-MoveForward-Front-0-1617486449606.jpg ####
+04/03/2021 @ 17:47:31.523: ,#### Uploaded 20-MoveForward-Rear-0-1617486449715.jpg ####
+04/03/2021 @ 17:47:32.694: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:47:51.527: ,New Command: ,21,MoveForward,30,5,0,1
+04/03/2021 @ 17:48:12.363: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:48:12.918: ,#### Uploaded 21-MoveForward-Front-0-1617486491279.jpg ####
+04/03/2021 @ 17:48:13.473: ,#### Uploaded 21-MoveForward-Rear-0-1617486491392.jpg ####
+04/03/2021 @ 17:48:14.627: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:49:07.322: ,New Command: ,22,MoveForward,30,5,0,1
+04/03/2021 @ 17:51:01.426: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:51:02.036: ,#### Uploaded 22-MoveForward-Front-0-1617486661151.jpg ####
+04/03/2021 @ 17:51:02.654: ,#### Uploaded 22-MoveForward-Rear-0-1617486661278.jpg ####
+04/03/2021 @ 17:51:03.855: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:51:22.715: ,New Command: ,23,MoveForward,30,5,0,1
+04/03/2021 @ 17:51:34.138: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:51:34.731: ,#### Uploaded 23-MoveForward-Front-0-1617486694005.jpg ####
+04/03/2021 @ 17:51:35.927: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:51:36.561: ,#### Uploaded 23-MoveForward-Rear-0-1617486694115.jpg ####
+04/03/2021 @ 17:51:37.707: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:51:53.359: ,New Command: ,24,TurnLeft,30,5,1,-1
+04/03/2021 @ 17:52:16.432: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:52:17.047: ,#### Uploaded 24-TurnLeft-Front-0-1617486735648.jpg ####
+04/03/2021 @ 17:52:17.656: ,#### Uploaded 24-TurnLeft-Rear-0-1617486735774.jpg ####
+04/03/2021 @ 17:52:18.832: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:52:35.118: ,New Command: ,25,MoveForward,30,5,0,1
+04/03/2021 @ 17:52:57.661: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:52:58.233: ,#### Uploaded 25-MoveForward-Front-0-1617486776847.jpg ####
+04/03/2021 @ 17:52:58.855: ,#### Uploaded 25-MoveForward-Rear-0-1617486776973.jpg ####
+04/03/2021 @ 17:53:00.016: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:53:23.383: ,New Command: ,26,MoveForward,30,5,0,1
+04/03/2021 @ 17:53:38.976: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:53:40.158: ,#### Uploaded 26-MoveForward-Front-0-1617486818469.jpg ####
+04/03/2021 @ 17:53:40.900: ,#### Uploaded 26-MoveForward-Rear-0-1617486818576.jpg ####
+04/03/2021 @ 17:53:42.079: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:54:26.310: ,New Command: ,27,MoveForward,20,5,0,1
+04/03/2021 @ 17:54:46.197: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:54:46.765: ,#### Uploaded 27-MoveForward-Front-0-1617486885474.jpg ####
+04/03/2021 @ 17:54:47.359: ,#### Uploaded 27-MoveForward-Rear-0-1617486885582.jpg ####
+04/03/2021 @ 17:54:48.548: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:55:43.109: ,New Command: ,28,MoveForward,20,5,0,1
+04/03/2021 @ 17:55:56.049: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:55:56.684: ,#### Uploaded 28-MoveForward-Front-0-1617486954955.jpg ####
+04/03/2021 @ 17:55:57.322: ,#### Uploaded 28-MoveForward-Rear-0-1617486955062.jpg ####
+04/03/2021 @ 17:55:58.520: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:56:06.574: ,New Command: ,29,TurnRight,30,5,1,1
+04/03/2021 @ 17:56:25.740: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:56:26.352: ,#### Uploaded 29-TurnRight-Front-0-1617486984699.jpg ####
+04/03/2021 @ 17:56:27.031: ,#### Uploaded 29-TurnRight-Rear-0-1617486984827.jpg ####
+04/03/2021 @ 17:56:28.171: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:57:00.381: ,New Command: ,30,TakeScienceImage,0,0,0,0
+04/03/2021 @ 17:57:14.044: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:57:20.083: ,#### Uploaded 30-TakeScienceImage-Front-0-1617487033762.jpg ####
+04/03/2021 @ 17:57:25.125: ,#### Uploaded 30-TakeScienceImage-Rear-0-1617487033862.jpg ####
+04/03/2021 @ 17:57:26.299: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:58:38.709: ,New Command: ,31,TurnLeft,30,5,1,-1
+04/03/2021 @ 17:58:56.952: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:58:57.522: ,#### Uploaded 31-TurnLeft-Front-0-1617487136561.jpg ####
+04/03/2021 @ 17:58:58.175: ,#### Uploaded 31-TurnLeft-Rear-0-1617487136670.jpg ####
+04/03/2021 @ 17:58:59.380: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:59:02.231: ,New Command: ,32,TurnLeft,30,5,1,-1
+04/03/2021 @ 17:59:24.464: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:59:25.118: ,#### Uploaded 32-TurnLeft-Front-0-1617487164234.jpg ####
+04/03/2021 @ 17:59:25.731: ,#### Uploaded 32-TurnLeft-Rear-0-1617487164340.jpg ####
+04/03/2021 @ 17:59:26.923: ,NEW IMAGE DETECTED.
+04/03/2021 @ 17:59:56.295: ,New Command: ,33,TurnLeft,30,5,1,-1
+04/03/2021 @ 18:00:20.710: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:00:21.277: ,#### Uploaded 33-TurnLeft-Front-0-1617487219799.jpg ####
+04/03/2021 @ 18:00:21.884: ,#### Uploaded 33-TurnLeft-Rear-0-1617487219905.jpg ####
+04/03/2021 @ 18:00:23.132: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:00:34.971: ,New Command: ,34,TurnLeft,30,5,1,-1
+04/03/2021 @ 18:00:48.405: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:00:48.956: ,#### Uploaded 34-TurnLeft-Front-0-1617487247510.jpg ####
+04/03/2021 @ 18:00:49.569: ,#### Uploaded 34-TurnLeft-Rear-0-1617487247616.jpg ####
+04/03/2021 @ 18:00:50.725: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:01:04.691: ,New Command: ,35,TurnLeft,30,5,1,-1
+04/03/2021 @ 18:01:29.150: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:01:29.762: ,#### Uploaded 35-TurnLeft-Front-0-1617487288631.jpg ####
+04/03/2021 @ 18:01:30.365: ,#### Uploaded 35-TurnLeft-Rear-0-1617487288738.jpg ####
+04/03/2021 @ 18:01:31.546: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:03:42.777: ,NEW IMAGE DETECTED.
+04/03/2021 @ 18:07:48.611: ,NEW IMAGE DETECTED.

@@ -107,6 +107,8 @@ def upload_data(f, addr):
         print("#### Uploaded %s ####" % addr)
         Log(["#### Uploaded %s ####" % addr])
         pp.pprint(data)
+    else:
+        print("\tUpload Failed.");
 
 def process_image(addr):
     # Check if science image:
