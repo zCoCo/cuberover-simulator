@@ -74,11 +74,16 @@ class MongoDbCollection:
     def __init__(self, collection=Names.COMMANDS, partition='test', code=''):
         assert isinstance(collection, MongoDbCollection.Names)
 
-        url = "mongodb+srv://CubeRoverAdmin:{c}@devcluster-3thor.mongodb.net/{u}?retryWrites=true".format(c=code,u='test');
+        import certifi
+        ca = certifi.where()
+        
+        user = 'test'
+        url = f"mongodb+srv://{user}:{code}@moc-dev-cluster.aapdlyf.mongodb.net/?retryWrites=true&w=majority"
+        # url = "mongodb+srv://CubeRoverAdmin:{c}@devcluster-3thor.mongodb.net/{u}?retryWrites=true".format(c=code,u='test');
 
         self.client = pymongo.MongoClient(
             #'mongodb://CubeRoverAdmin:RedRover@127.0.0.1:27017/admin?retryWrites=true&w=majority')
-            url)
+            url, tlsCAFile=ca)
         self.db = self.client[partition]
         self.fs = GridFS(self.db)  # filesystem. used externally (for image storage, for example)
         self.collection = self.db[collection.value]
