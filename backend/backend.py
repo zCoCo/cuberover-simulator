@@ -35,6 +35,7 @@ IMAGES_DIR = "../"  # location of images directory
 
 ENABLE_LOGGING = True
 LOG_FILE = 'Log.csv'
+INDUCED_LATENCY_SEC: int = 0
 
 
 DB = types.SimpleNamespace()
@@ -49,11 +50,11 @@ def Log(entries):
             writer.writerow([datetime.now().strftime("%m/%d/%Y @ %H:%M:%S.%f")[:-3] + ": "] + entries)
 
 def loadArgs(argv):
-    global MISSION, PASS, COMMANDS_HISTORY, TELEMETRY_HISTORY, IMAGES_DIR
+    global MISSION, PASS, COMMANDS_HISTORY, TELEMETRY_HISTORY, IMAGES_DIR, INDUCED_LATENCY_SEC
 
     helpstr = 'usage: backend.py -m <mission_name> -p <mission_pass> -c <commands_csv> -t <telem_csv> -i <image_dir>'
     try:
-        opts, args = getopt.getopt(argv, "hm:p:c:t:i:", ["help", "mission_name=", "mission_pass=", "commands_csv=", "telem_csv=", "image_dir="])
+        opts, args = getopt.getopt(argv, "hm:p:c:t:i:l:", ["help", "mission_name=", "mission_pass=", "commands_csv=", "telem_csv=", "image_dir=", "latency="])
     except getopt.GetoptError:
         print('backend.py: INVALID ARGS.')
         print(helpstr)
@@ -73,6 +74,8 @@ def loadArgs(argv):
             TELEMETRY_HISTORY = arg
         elif opt in ('-i', '--image_dir'):
             IMAGES_DIR = arg
+        elif opt in ('-l', '--latency'):
+            INDUCED_LATENCY_SEC = int(arg)
 
 def nameToData(name):
     """
@@ -165,6 +168,10 @@ class UploadNewImages(Thread):
             if added:
                 print("NEW IMAGE DETECTED.")
                 Log(["NEW IMAGE DETECTED."])
+                # Wait to actually do anything (by latency amount):
+                print(f"\tWaiting {INDUCED_LATENCY_SEC}s before uploading . . .")
+                time.sleep(INDUCED_LATENCY_SEC)
+                print("\tUploading . . .")
                 upload_files(added)
             before = after
 
@@ -229,6 +236,7 @@ def main():
     print("Command Location: ", COMMANDS_HISTORY)
     print("Telemetry Location: ", TELEMETRY_HISTORY)
     print("Image Store: ", IMAGES_DIR)
+    print("Latency [sec]: ", INDUCED_LATENCY_SEC)
     Log([MISSION,PASS,COMMANDS_HISTORY,TELEMETRY_HISTORY,IMAGES_DIR])
 
     # Connect to the Images Collection:

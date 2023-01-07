@@ -13,7 +13,7 @@ while True:
     pag.click()
     pag.typewrite(['d','e','a','d','b','e','e','f'], interval=0.2)
     time.sleep(9)
-    pag.moveTo(10,10)
+    pag.moveTo(100,10)
     pag.click()
     pag.typewrite(['d','e','a','d','b','e','e','f'], interval=0.2)
     time.sleep(1)
